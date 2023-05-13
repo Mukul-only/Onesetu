@@ -1,0 +1,103 @@
+/* .hamburger {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  transition: transform ease-in-out 500ms;
+}
+
+.top,
+.middle,
+.bottom {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 3px;
+  @apply bg-darkBlue origin-left rounded-full;
+  transition: transform 500ms;
+}
+
+.middle {
+  transform: translateY(10px);
+}
+.bottom {
+  transform: translateY(20px);
+}
+
+.hamburger.active {
+
+}
+.hamburger.active .top {
+  transform: rotate(135deg) translateX(-20px) translateY(-22px);
+}
+.hamburger.active .middle {
+  transform: scale(0);
+}
+.hamburger.active .bottom {
+  transform: rotate(-135deg) translateY(2px) translateX(-40px);
+} */
+
+/* body {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  margin: 0;
+} */
+svg {
+  height: 60px;
+  position: absolute;
+  width: 60px;
+}
+
+.plate {
+  height: 60px;
+  width: 60px;
+}
+.burger {
+  filter: url(#gooeyness);
+}
+.x {
+  transform: scale(0);
+  transition: transform 400ms;
+}
+.line {
+  fill: none;
+  stroke: #00357c;
+  stroke-width: 4px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transform-origin: 50%;
+  transition: stroke-dasharray 500ms 200ms, stroke-dashoffset 500ms 200ms,
+    transform 500ms 200ms;
+}
+.x .line {
+  stroke-width: 4px;
+}
+/* First plate */
+.plate1 .line2 {
+  stroke-dasharray: 40 200;
+  stroke-dashoffset: 0px;
+}
+.plate1 .line3 {
+  stroke-dasharray: 40 179;
+  stroke-dashoffset: 0px;
+}
+.active .line {
+  transition: stroke-dasharray 500ms, stroke-dashoffset 500ms, transform 500ms;
+}
+.active.plate1 .line1 {
+  transform: scale(0, 1);
+  transition: transform 500ms 100ms;
+}
+.active.plate1 .line2 {
+  stroke-dasharray: 5px 200;
+  stroke-dashoffset: -164px;
+}
+.active.plate1 .line3 {
+  stroke-dasharray: 5px 179;
+  stroke-dashoffset: -142px;
+}
+.active .x {
+  transform: scale(1);
+  transition: transform 400ms 350ms;
+}
