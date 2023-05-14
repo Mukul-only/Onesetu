@@ -6,6 +6,9 @@ const hamburgerSlice = createSlice({
     toogleActive(state) {
       state.isActive = !state.isActive;
     },
+    notActive(state) {
+      state.isActive = false;
+    },
   },
 });
 export const hamburgerAction = hamburgerSlice.actions;

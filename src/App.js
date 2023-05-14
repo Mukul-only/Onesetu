@@ -1,31 +1,18 @@
 import "./App.css";
-import Benifits from "./components/benifitsSection/Benifits";
-import Hero from "./components/heroSection/Hero";
-import Navigation from "./components/navigation/Navigation";
-import SampleReport from "./components/sampleReport/SampleReport ";
-import Steps from "./components/steps/Steps";
-import Footer from "./components/footer/Footer";
-import MobileNav from "./components/navigation/MobileNav";
-import { useSelector } from "react-redux";
-
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Root from "./pages/Root";
+import LandingPage from "./pages/LandingPage";
+import ErrorPage from "./pages/Error";
 function App() {
-  const active = useSelector((store) => store.hamburger.isActive);
-  return (
-    <>
-      <Navigation />
-      <MobileNav
-        className={`md:hidden ${
-          active ? " space-y-4 py-8" : "h-0 overflow-hidden"
-        } duration-300`}
-      />
-
-      <Hero />
-      <SampleReport />
-      <Steps />
-      <Benifits />
-      <Footer />
-    </>
-  );
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Root />,
+      errorElement: <ErrorPage />,
+      children: [{ index: true, element: <LandingPage /> }],
+    },
+  ]);
+  return <RouterProvider router={router} />;
 }
 
 export default App;

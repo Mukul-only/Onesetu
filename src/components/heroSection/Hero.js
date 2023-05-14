@@ -4,7 +4,7 @@ import { useTypewriter } from "react-simple-typewriter";
 import classes from "./Hero.module.css";
 export const CreateReportBtn = (props) => {
   return (
-    <Button className="font-semibold bg-darkBlue text-white px-16 py-4 mt-14 hover:bg-opacity-95 w-max text-lg hover:scale-110 duration-500 ease-in-out">
+    <Button className="font-semibold bg-darkBlue text-white px-16 py-4 mt-14 hover:bg-opacity-95 w-max text-lg  duration-500 ease-in-out">
       Create Report
     </Button>
   );
@@ -49,7 +49,7 @@ const Hero = (props) => {
             <img
               src={require("../../assets/hero.png")}
               alt="img"
-              className="relative z-10"
+              className="relative z-10 w-56 xl:w-72"
             />
           </div>
         </div>

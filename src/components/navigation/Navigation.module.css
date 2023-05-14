@@ -4,3 +4,6 @@
 .nav-item-hover {
   @apply block origin-center mx-auto w-0 h-[2px]  bg-darkBlue  duration-300 ease-in-out;
 }
+.active {
+  @apply font-bold text-xl;
+}
