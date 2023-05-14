@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import classes from "./Navigation.module.css";
 import HamDispatch from "../../util/HamDispatch";
 const MobileNav = (props) => {
-  const hr = "border-b-1";
+  const hr = "border-b-1 ";
   const dispatch = HamDispatch();
   const blogsClickHandler = () => {
     dispatch.toogleActive();

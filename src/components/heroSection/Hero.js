@@ -2,11 +2,14 @@ import Card from "../../UI/Card";
 import Button from "../../UI/Button";
 import { useTypewriter } from "react-simple-typewriter";
 import classes from "./Hero.module.css";
+import { Link } from "react-router-dom";
 export const CreateReportBtn = (props) => {
   return (
-    <Button className="font-semibold bg-darkBlue text-white px-16 py-4 mt-14 hover:bg-opacity-95 w-max text-lg  duration-500 ease-in-out">
-      Create Report
-    </Button>
+    <Link to="/createreport">
+      <Button className="font-semibold bg-darkBlue text-white px-16 py-4 mt-14 hover:bg-opacity-95 w-max text-lg  duration-500 ease-in-out">
+        Create Report
+      </Button>
+    </Link>
   );
 };
 const Hero = (props) => {
