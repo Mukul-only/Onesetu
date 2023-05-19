@@ -5,6 +5,7 @@ import ThirdFeild from "./grainComponents/ThirdFeild";
 import FourthFeild from "./grainComponents/FourthFeild";
 import SelectAllFeild from "./grainComponents/SelectAllFeild";
 import { useSelector } from "react-redux";
+import ConfirmCost from "./grainComponents/ConfirmCost";
 const REPORT_FEILD = [
   <ReportCard key="0">
     <FirstFeild />
@@ -18,7 +19,7 @@ const REPORT_FEILD = [
   <ReportCard key="3">
     <FourthFeild />
   </ReportCard>,
-  <ReportCard key="4">
+  <ReportCard key="6">
     <p>Monthly Expense</p>
   </ReportCard>,
 ];
@@ -28,12 +29,20 @@ const ReportsFeilds = () => {
   const renderFeild = [];
   let ar = 0;
   for (let i = 0; i <= index; i++) {
-    if (i === 4 && (needFor === "tw" || needFor === "term")) {
-      renderFeild.push(
-        <ReportCard key="4">
-          <SelectAllFeild />
-        </ReportCard>
-      );
+    if ((i === 4 || i === 5) && (needFor === "tw" || needFor === "term")) {
+      if (i === 4) {
+        renderFeild.push(
+          <ReportCard key="4">
+            <SelectAllFeild />
+          </ReportCard>
+        );
+      } else if (i === 5) {
+        renderFeild.push(
+          <ReportCard key="5">
+            <ConfirmCost />
+          </ReportCard>
+        );
+      }
     } else {
       renderFeild.push(REPORT_FEILD[ar]);
       ar++;

@@ -2,6 +2,7 @@ import useInput from "../../hooks/use-input";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { formfeildSliceAction } from "../../../store/formfeild-slice";
+
 import FormInput from "../../../UI/FormInput";
 const FirstFeild = (props) => {
   const allFeildIsTouched = useSelector(
@@ -62,6 +63,7 @@ const FirstFeild = (props) => {
         onChange={inputChangeHandler}
         onBlur={inputBlurHandler}
         hasError={hasError}
+        className="mt-8"
       />
       {hasError && <p className="px-2 text-red-500">input is in valid</p>}
     </>

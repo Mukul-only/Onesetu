@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { act } from "react-dom/test-utils";
 
 const formfeildSlice = createSlice({
   name: "formfeild",
@@ -54,6 +55,8 @@ const formfeildSlice = createSlice({
         while (temp[temp.length - 1].id !== action.payload.set) {
           state.allFeildValidity.pop();
         }
+        state.index = action.payload.set;
+      } else if (action.payload.id === 2) {
         state.index = action.payload.set;
       }
     },
