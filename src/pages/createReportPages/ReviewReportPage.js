@@ -8,10 +8,10 @@ const ReviewReportPage = () => {
           <h1 className="text-darkBlue font-bold text-xl md:text-2xl">
             Bhai tu kb se report bnane lga!
           </h1>
-          <p className="text-xs md:text-sm">😘😘</p>
+          <p className="text-xs md:text-sm"></p>
           <video
             preload="auto"
-            autoPlay="true"
+            autoPlay
             controls
             className="rounded-lg shadow-box"
           >

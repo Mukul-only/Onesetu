@@ -6,16 +6,18 @@ import { Link } from "react-router-dom";
 const ReportComponent = (props) => {
   return (
     <div className="bg-lightBlue py-10">
-      <Card className="flex flex-col space-y-12 items-center">
+      <Card className="flex flex-col  items-center">
         <h1 className="text-deepBlue text-2xl md:text-3xl font-bold text-center">
           Create Project Report with{" "}
           <span className="text-darkBlue"> Onesetu</span> <span>❤️</span>
         </h1>
-        <div className="flex items-center">
+        <div className="flex items-center mt-12 mb-28">
           <ProgressBar progress={props.progress} />
         </div>
-        {props.children}
-        <div className="space-x-6">
+        <div className="flex flex-col items-center w-full space-y-4">
+          {props.children}
+        </div>
+        <div className="space-x-6 mt-12">
           {props.toBack && (
             <Link to={props.toBack} relative="route">
               <Button
