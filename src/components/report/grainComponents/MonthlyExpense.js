@@ -41,7 +41,7 @@ const MonthlyExpense = (props) => {
         <ExpenseFeild id="Salary" hash={6} />
         <ExpenseFeild id="Procurement" hash={6} />
         <ExpenseFeild id="Stationary expenses" hash={6} />
-        <ExpenseFeild id="Electricity/water" hash={6} />
+        <ExpenseFeild id="Electricity/ water" hash={6} />
         <ExpenseFeild id="Repair & maintenance" hash={6} />
         <ExpenseFeild id="Transportation" hash={6} />
         <ExpenseFeild id="Internet Charges" hash={6} />
