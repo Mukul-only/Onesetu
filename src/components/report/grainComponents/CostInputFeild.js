@@ -15,7 +15,7 @@ const CostInputFeild = (props) => {
   } = useInput((input) => input.trim().length !== 0);
   useEffect(() => {
     const identifier = setTimeout(() => {
-      props.onValid(input);
+      props.onChange(input);
     }, 700);
     return () => {
       clearTimeout(identifier);

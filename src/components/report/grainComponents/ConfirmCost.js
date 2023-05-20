@@ -13,8 +13,9 @@ const ConfirmCostFeild = (props) => {
 };
 const ConfirmCost = (props) => {
   const { allExpenseSum } = useSelector((state) => state.formdata);
-  const marginMoney = (allExpenseSum * 0.18).toFixed(2);
-  const eligibleAmount = (allExpenseSum - marginMoney).toFixed(2);
+  const sum = allExpenseSum.allExpenseNeededSum;
+  const marginMoney = (sum * 0.18).toFixed(2);
+  const eligibleAmount = (sum - marginMoney).toFixed(2);
   return (
     <>
       <h1 className="text-darkBlue font-bold text-xl md:text-2xl">
@@ -25,7 +26,7 @@ const ConfirmCost = (props) => {
         details after creating the report.
       </p>
       <div className="mt-8 ">
-        <ConfirmCostFeild title="Total project cost" money={allExpenseSum} h />
+        <ConfirmCostFeild title="Total project cost" money={sum} h />
         <ConfirmCostFeild
           title="Your investment (margin money) 18%"
           money={marginMoney}

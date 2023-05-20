@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
 
 const formfeildSlice = createSlice({
   name: "formfeild",
@@ -47,7 +46,7 @@ const formfeildSlice = createSlice({
     },
     setIndex(state, action) {
       if (action.payload.id === 0) {
-        if (state.index < 5) {
+        if (state.index < 6) {
           state.index++;
         }
       } else if (action.payload.id === 1) {

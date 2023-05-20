@@ -5,7 +5,9 @@ import ReportsFeilds from "../../components/report/ReportsFeilds";
 import { useSelector, useDispatch } from "react-redux";
 import { formfeildSliceAction } from "../../store/formfeild-slice";
 import { formDataAction } from "../../store/formData-slice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
+import Success from "../../UI/Success";
 
 const BusinessInfoPage = () => {
   const navigate = useNavigate();
@@ -14,11 +16,21 @@ const BusinessInfoPage = () => {
   const index = useSelector((state) => state.formfeild.index);
   const formData = useSelector((state) => state.formdata);
   const { needFor } = useSelector((state) => state.formfeild);
+  const overlay = document.getElementById("overlays");
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    dispatch(formfeildSliceAction.setIndex({ id: 1, set: 0 }));
+  }, []);
   useEffect(() => {
     if (index < 4 || needFor === "working") {
-      dispatch(formDataAction.reset());
+      dispatch(formDataAction.reset(4));
     } else {
-      dispatch(formDataAction.setMounted(true));
+      dispatch(formDataAction.setMounted({ id: 4, isMounted: true }));
+    }
+    if (index < 6) {
+      dispatch(formDataAction.reset(6));
+    } else {
+      dispatch(formDataAction.setMounted({ id: 6, isMounted: true }));
     }
   }, [dispatch, index, needFor]);
 
@@ -28,25 +40,30 @@ const BusinessInfoPage = () => {
     }
 
     if (
-      index < 5 &&
+      index < 6 &&
       isFormValid &&
-      (formData.mounted ? formData.isDataValid : true)
+      (formData.mounted.allExpenseNeededMounted
+        ? formData.isDataValid.allExpenseNeededValid
+        : true)
     ) {
       dispatch(formfeildSliceAction.setIndex({ id: 0 }));
-    } else if (isFormValid && formData.isDataValid) {
-      navigate("personalinfo");
+    } else if (isFormValid && formData.isFormDataValid) {
+      setShow(true);
     }
   };
 
   return (
-    <ReportComponent progress="0" toContinue="personalinfo">
+    <ReportComponent progress="0">
       <ReportsFeilds />
-      <Button
-        className="w-24 py-2 font-semibold"
-        onClick={showNextFeildHandler}
-      >
-        next
-      </Button>
+      <div>
+        <Button
+          className="w-44 py-3  mt-10 font-semibold bg-darkBlue hover:bg-opacity-90 duration-300 text-white"
+          onClick={showNextFeildHandler}
+        >
+          Save & Continue
+        </Button>
+      </div>
+      {show && ReactDOM.createPortal(<Success />, overlay)}
     </ReportComponent>
   );
 };

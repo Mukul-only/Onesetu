@@ -6,6 +6,7 @@ import FourthFeild from "./grainComponents/FourthFeild";
 import SelectAllFeild from "./grainComponents/SelectAllFeild";
 import { useSelector } from "react-redux";
 import ConfirmCost from "./grainComponents/ConfirmCost";
+import MonthlyExpense from "./grainComponents/MonthlyExpense";
 const REPORT_FEILD = [
   <ReportCard key="0">
     <FirstFeild />
@@ -20,7 +21,7 @@ const REPORT_FEILD = [
     <FourthFeild />
   </ReportCard>,
   <ReportCard key="6">
-    <p>Monthly Expense</p>
+    <MonthlyExpense />
   </ReportCard>,
 ];
 const ReportsFeilds = () => {

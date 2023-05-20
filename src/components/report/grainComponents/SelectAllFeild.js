@@ -3,84 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { formDataAction } from "../../../store/formData-slice";
 import { useEffect } from "react";
 import { formfeildSliceAction } from "../../../store/formfeild-slice";
+import { ExpenseFeild } from "./MonthlyExpense";
+
 const SelectAllFeild = (props) => {
   const dispatch = useDispatch();
 
   const { isDataValid } = useSelector((state) => state.formdata);
 
-  const landIsValid = (input) => {
-    dispatch(formDataAction.setAllExpenseData({ name: "Land", value: input }));
-    dispatch(formDataAction.setAllExpenseSum());
-  };
-  const shedIsValid = (input) => {
-    dispatch(
-      formDataAction.setAllExpenseData({ name: "Shed/building", value: input })
-    );
-    dispatch(formDataAction.setAllExpenseSum());
-  };
-  const electronicIsValid = (input) => {
-    dispatch(
-      formDataAction.setAllExpenseData({
-        name: "Electronic gaget",
-        value: input,
-      })
-    );
-    dispatch(formDataAction.setAllExpenseSum());
-  };
-  const furnitureIsValid = (input) => {
-    dispatch(
-      formDataAction.setAllExpenseData({ name: "Furniture", value: input })
-    );
-    dispatch(formDataAction.setAllExpenseSum());
-  };
-  const electrificationIsValid = (input) => {
-    dispatch(
-      formDataAction.setAllExpenseData({
-        name: "Electrification & electricity backup",
-        value: input,
-      })
-    );
-    dispatch(formDataAction.setAllExpenseSum());
-  };
-  const racksIsValid = (input) => {
-    dispatch(
-      formDataAction.setAllExpenseData({
-        name: "Racks & storage",
-        value: input,
-      })
-    );
-    dispatch(formDataAction.setAllExpenseSum());
-  };
-  const vehicleIsValid = (input) => {
-    dispatch(
-      formDataAction.setAllExpenseData({ name: "Vehicle", value: input })
-    );
-    dispatch(formDataAction.setAllExpenseSum());
-  };
-
-  const softwareIsValid = (input) => {
-    dispatch(
-      formDataAction.setAllExpenseData({
-        name: "Software purchase",
-        value: input,
-      })
-    );
-    dispatch(formDataAction.setAllExpenseSum());
-  };
-  const otherIsValid = (input) => {
-    dispatch(
-      formDataAction.setAllExpenseData({
-        name: "Other initial expenditure",
-        value: input,
-      })
-    );
-    dispatch(formDataAction.setAllExpenseSum());
-  };
   useEffect(() => {
-    if (!isDataValid) {
+    if (!isDataValid.allExpenseNeededValid) {
       dispatch(formfeildSliceAction.setIndex({ id: 2, set: 4 }));
     }
-  }, [isDataValid]);
+  }, [isDataValid.allExpenseNeededValid]);
   return (
     <>
       <h1 className="text-darkBlue font-bold text-xl md:text-2xl">
@@ -88,17 +22,18 @@ const SelectAllFeild = (props) => {
       </h1>
       <p className="text-xs md:text-sm">please select all that you need.</p>
       <div className="space-y-3">
-        <CostInputFeild id="Land" onValid={landIsValid} />
-        <CostInputFeild id="Shed/building" onValid={shedIsValid} />
-        <CostInputFeild id="Electronic gaget" onValid={electronicIsValid} />
-        <CostInputFeild id="Furniture" onValid={furnitureIsValid} />
-        <CostInputFeild id="Electrification" onValid={electrificationIsValid} />
-        <CostInputFeild id="Racks & storage" onValid={racksIsValid} />
-        <CostInputFeild id="Vehicle" onValid={vehicleIsValid} />
-        <CostInputFeild id="Software" onValid={softwareIsValid} />
-        <CostInputFeild id="Other" onValid={otherIsValid} />
+        <ExpenseFeild id="Land" hash={4} />
+        <ExpenseFeild id="Shed/building" hash={4} />
+        <ExpenseFeild id="Machinery" hash={4} />
+        <ExpenseFeild id="Electronic gaget" hash={4} />
+        <ExpenseFeild id="Furniture" hash={4} />
+        <ExpenseFeild id="Electrification" hash={4} />
+        <ExpenseFeild id="Racks & storage" hash={4} />
+        <ExpenseFeild id="Vehicle" hash={4} />
+        <ExpenseFeild id="Software" hash={4} />
+        <ExpenseFeild id="Other" hash={4} />
       </div>
-      {!isDataValid && (
+      {!isDataValid.allExpenseNeededValid && (
         <p className="px-2 bg-red-50 border border-red-400 mt-4 rounded-lg py-2 text-red-800">
           Remember:Total sum should be grater than zero.
         </p>
