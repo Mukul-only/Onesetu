@@ -64,6 +64,7 @@ const SecondFeild = (props) => {
         hasError={hasError}
         onBlur={inputBlurHandler}
         className="mt-8"
+        isValid={isValid}
       />
       {hasError && <p className="px-2 text-red-500">input is in valid</p>}
     </>
