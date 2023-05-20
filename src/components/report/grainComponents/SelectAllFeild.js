@@ -23,7 +23,7 @@ const SelectAllFeild = (props) => {
       <p className="text-xs md:text-sm">please select all that you need.</p>
       <div className="space-y-3">
         <ExpenseFeild id="Land" hash={4} />
-        <ExpenseFeild id="Shed/building" hash={4} />
+        <ExpenseFeild id="Shed/ building" hash={4} />
         <ExpenseFeild id="Machinery" hash={4} />
         <ExpenseFeild id="Electronic gaget" hash={4} />
         <ExpenseFeild id="Furniture" hash={4} />
