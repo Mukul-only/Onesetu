@@ -6,8 +6,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { formfeildSliceAction } from "../../store/formfeild-slice";
 import { formDataAction } from "../../store/formData-slice";
 import { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
-import Success from "../../UI/Success";
 
 const BusinessInfoPage = () => {
   const navigate = useNavigate();
@@ -17,7 +15,7 @@ const BusinessInfoPage = () => {
   const formData = useSelector((state) => state.formdata);
   const { needFor } = useSelector((state) => state.formfeild);
   const overlay = document.getElementById("overlays");
-  const [show, setShow] = useState(false);
+
   useEffect(() => {
     dispatch(formfeildSliceAction.setIndex({ id: 1, set: 0 }));
   }, []);
@@ -48,7 +46,7 @@ const BusinessInfoPage = () => {
     ) {
       dispatch(formfeildSliceAction.setIndex({ id: 0 }));
     } else if (isFormValid && formData.isFormDataValid) {
-      setShow(true);
+      navigate("personalinfo");
     }
   };
 
@@ -63,7 +61,6 @@ const BusinessInfoPage = () => {
           Save & Continue
         </Button>
       </div>
-      {show && ReactDOM.createPortal(<Success />, overlay)}
     </ReportComponent>
   );
 };
