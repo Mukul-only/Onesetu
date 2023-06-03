@@ -12,7 +12,7 @@ const SelectAllFeild = (props) => {
 
   useEffect(() => {
     if (!isDataValid.allExpenseNeededValid) {
-      dispatch(formfeildSliceAction.setIndex({ id: 2, set: 4 }));
+      dispatch(formfeildSliceAction.setIndex(4));
     }
   }, [isDataValid.allExpenseNeededValid]);
   return (

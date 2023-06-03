@@ -9,3 +9,7 @@ select,
 a {
   -webkit-tap-highlight-color: transparent;
 }
+
+.error {
+  @apply px-2 text-red-500 md:text-base text-xs;
+}

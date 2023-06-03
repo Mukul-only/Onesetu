@@ -3,7 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 const formDataSlice = createSlice({
   name: "allExpense",
   initialState: {
-    allExpensedata: { allExpenseNeeded: {}, monthlyExpense: {} },
+    allExpensedata: {
+      "Personal information": {},
+      "Business information": {},
+      allExpenseNeeded: {},
+      monthlyExpense: {},
+    },
     allExpenseSum: { allExpenseNeededSum: 0, monthlyExpenseSum: 0 },
     mounted: { allExpenseNeededMounted: false, monthlyExpenseMounted: false },
     isDataValid: { allExpenseNeededValid: false, monthlyExpenseValid: false },
@@ -16,6 +21,10 @@ const formDataSlice = createSlice({
         state.allExpensedata.allExpenseNeeded[newItem.name] = newItem.value;
       } else if (newItem.id === 6) {
         state.allExpensedata.monthlyExpense[newItem.name] = newItem.value;
+      } else if (newItem.label) {
+        state.allExpensedata[newItem.id][newItem.label] = newItem.value;
+      } else {
+        state.allExpensedata[newItem.id] = newItem.value;
       }
     },
     setAllExpenseSum(state, action) {
@@ -33,6 +42,7 @@ const formDataSlice = createSlice({
         } else {
           state.isDataValid.allExpenseNeededValid = false;
         }
+        // state.allExpensedata.allExpenseNeeded.Sum = sum;
       }
       if (action.payload === 6) {
         const values = Object.values(state.allExpensedata.monthlyExpense);
@@ -48,6 +58,7 @@ const formDataSlice = createSlice({
         } else {
           state.isDataValid.monthlyExpenseValid = false;
         }
+        // state.allExpensedata.monthlyExpense.Sum = sum;
       }
 
       state.isFormDataValid =

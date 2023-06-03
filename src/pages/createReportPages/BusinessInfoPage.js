@@ -17,7 +17,7 @@ const BusinessInfoPage = () => {
   const overlay = document.getElementById("overlays");
 
   useEffect(() => {
-    dispatch(formfeildSliceAction.setIndex({ id: 1, set: 0 }));
+    dispatch(formfeildSliceAction.setIndex(0));
   }, []);
   useEffect(() => {
     if (index < 4 || needFor === "working") {
@@ -33,19 +33,19 @@ const BusinessInfoPage = () => {
   }, [dispatch, index, needFor]);
 
   const showNextFeildHandler = () => {
-    for (let i = 0; i <= index; i++) {
-      dispatch(formfeildSliceAction.setIsTouched({ id: i, isTouched: true }));
-    }
+    dispatch(formfeildSliceAction.setAllTouched());
 
     if (
-      index < 6 &&
+      index < 7 &&
       isFormValid &&
       (formData.mounted.allExpenseNeededMounted
         ? formData.isDataValid.allExpenseNeededValid
         : true)
     ) {
-      dispatch(formfeildSliceAction.setIndex({ id: 0 }));
+      dispatch(formfeildSliceAction.setIndex());
     } else if (isFormValid && formData.isFormDataValid) {
+      dispatch(formfeildSliceAction.setIndex(0));
+      dispatch(formfeildSliceAction.reset());
       navigate("personalinfo");
     }
   };

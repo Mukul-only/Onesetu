@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { formfeildSliceAction } from "../../../store/formfeild-slice";
 
 import FormInput from "../../../UI/FormInput";
+import { formDataAction } from "../../../store/formData-slice";
 const FirstFeild = (props) => {
   const allFeildIsTouched = useSelector(
     (state) => state.formfeild.allFeildIsTouched
@@ -20,6 +21,16 @@ const FirstFeild = (props) => {
     reset,
   } = useInput((input) => input.trim().length !== 0);
 
+  useEffect(() => {
+    const identifier = setTimeout(() => {
+      dispatch(
+        formDataAction.setAllExpenseData({ id: "Name of firm", value: input })
+      );
+    }, 500);
+    return () => {
+      clearTimeout(identifier);
+    };
+  }, [input]);
   useEffect(() => {
     dispatch(
       formfeildSliceAction.setIsFormValid({
@@ -47,7 +58,7 @@ const FirstFeild = (props) => {
   }, [touched]);
   useEffect(() => {
     if (!isValid) {
-      dispatch(formfeildSliceAction.setIndex({ id: 1, set: 0 }));
+      dispatch(formfeildSliceAction.setIndex(0));
     }
   }, [isValid]);
 

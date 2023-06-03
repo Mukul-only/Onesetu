@@ -24,7 +24,7 @@ const MonthlyExpense = (props) => {
   const { isDataValid } = useSelector((state) => state.formdata);
   useEffect(() => {
     if (!isDataValid.monthlyExpenseValid) {
-      dispatch(formfeildSliceAction.setIndex({ id: 2, set: 6 }));
+      dispatch(formfeildSliceAction.setIndex(6));
     }
   }, [isDataValid.monthlyExpenseValid]);
 

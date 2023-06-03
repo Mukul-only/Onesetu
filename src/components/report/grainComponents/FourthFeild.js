@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { formfeildSliceAction } from "../../../store/formfeild-slice";
 import { RadioInput } from "./ThirdFeild";
+import { formDataAction } from "../../../store/formData-slice";
 const FourthFeild = (props) => {
   const dispatch = useDispatch();
   const [term, setTerm] = useState(false);
@@ -41,9 +42,31 @@ const FourthFeild = (props) => {
   }
 
   useEffect(() => {
+    let input = "";
+    if (term) {
+      input = "Term Loan";
+    } else if (working) {
+      input = "Working Capital Loan";
+    } else if (tw) {
+      input = "Term + Working Capital";
+    }
+    const identifier = setTimeout(() => {
+      dispatch(
+        formDataAction.setAllExpenseData({
+          id: "Need for loan",
+          value: input,
+        })
+      );
+    }, 500);
+    return () => {
+      clearTimeout(identifier);
+    };
+  }, [term, working, tw]);
+
+  useEffect(() => {
     dispatch(formfeildSliceAction.setIsFormValid({ id: 3, isValid: isValid }));
     if (!isValid) {
-      dispatch(formfeildSliceAction.setIndex({ id: 1, set: 3 }));
+      dispatch(formfeildSliceAction.setIndex(3));
     }
     dispatch(formfeildSliceAction.setNeedFor(needFor));
   }, [isValid, dispatch, needFor]);

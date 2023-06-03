@@ -7,6 +7,7 @@ import SelectAllFeild from "./grainComponents/SelectAllFeild";
 import { useSelector } from "react-redux";
 import ConfirmCost from "./grainComponents/ConfirmCost";
 import MonthlyExpense from "./grainComponents/MonthlyExpense";
+import BusinessInfo from "./grainComponents/BusinessInfo";
 const REPORT_FEILD = [
   <ReportCard key="0">
     <FirstFeild />
@@ -22,6 +23,9 @@ const REPORT_FEILD = [
   </ReportCard>,
   <ReportCard key="6">
     <MonthlyExpense />
+  </ReportCard>,
+  <ReportCard key="7">
+    <BusinessInfo />
   </ReportCard>,
 ];
 const ReportsFeilds = () => {
@@ -45,6 +49,7 @@ const ReportsFeilds = () => {
         );
       }
     } else {
+      if (i === 4) i = 6;
       renderFeild.push(REPORT_FEILD[ar]);
       ar++;
     }

@@ -44,23 +44,57 @@ const formfeildSlice = createSlice({
         existingItem.isTouched = newItem.isTouched;
       }
     },
+    setAllTouched(state) {
+      state.allFeildIsTouched.map((item) => (item.isTouched = true));
+    },
     setIndex(state, action) {
-      if (action.payload.id === 0) {
-        if (state.index < 6) {
-          state.index++;
+      if (action.payload >= 0) {
+        state.index = action.payload;
+        if (action.payload === 4 || action.payload === 6) {
+          if (state.allFeildValidity.length - 1 > state.index) {
+            while (state.allFeildValidity.length - 1 !== 3) {
+              state.allFeildValidity.pop();
+            }
+          }
+          let validity = true;
+          state.allFeildValidity.forEach((item) => {
+            validity = validity && item.isValid;
+          });
+
+          state.isFormValid = validity;
         }
-      } else if (action.payload.id === 1) {
-        const temp = state.allFeildValidity;
-        while (temp[temp.length - 1].id !== action.payload.set) {
-          state.allFeildValidity.pop();
+        if (state.allFeildValidity.length - 1 > state.index) {
+          while (state.allFeildValidity.length - 1 !== state.index) {
+            state.allFeildValidity.pop();
+          }
         }
-        state.index = action.payload.set;
-      } else if (action.payload.id === 2) {
-        state.index = action.payload.set;
+      } else {
+        state.index++;
       }
+
+      // if (action.payload.id === 0) {
+      //   if (state.index < 7) {
+      //     state.index++;
+      //   }
+      // } else if (action.payload.id === 1) {
+      //   const temp = state.allFeildValidity;
+      //   while (temp[temp.length - 1].id !== action.payload.set) {
+      //     state.allFeildValidity.pop();
+      //   }
+      //   state.index = action.payload.set;
+      // } else if (action.payload.id === 2) {
+      //   state.index = action.payload.set;
+      // }
     },
     setNeedFor(state, action) {
       state.needFor = action.payload;
+    },
+    reset(state) {
+      state.allFeildValidity = [];
+      state.isFormValid = true;
+      state.allFeildIsTouched = [];
+      state.index = 0;
+      state.needFor = "";
     },
   },
 });

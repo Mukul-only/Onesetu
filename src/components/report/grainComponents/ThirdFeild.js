@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { formfeildSliceAction } from "../../../store/formfeild-slice";
-
+import { formDataAction } from "../../../store/formData-slice";
 export const RadioInput = (props) => {
   return (
     <div
@@ -26,7 +26,7 @@ const ThirdFeild = (props) => {
   const [isTouched, setIsTouched] = useState(false);
   const isValid = mudra || pmgep || msme;
   const hasError = isTouched && !isValid;
-
+  const loanSchemeRef = useRef();
   const allFeildIsTouched = useSelector(
     (state) => state.formfeild.allFeildIsTouched
   );
@@ -48,9 +48,31 @@ const ThirdFeild = (props) => {
   };
 
   useEffect(() => {
+    let input = "";
+    if (mudra) {
+      input = "Mudra Loan";
+    } else if (pmgep) {
+      input = "PMGEP Loan";
+    } else if (msme) {
+      input = "MSME Loan";
+    }
+    const identifier = setTimeout(() => {
+      dispatch(
+        formDataAction.setAllExpenseData({
+          id: "Type of loan",
+          value: input,
+        })
+      );
+    }, 500);
+    return () => {
+      clearTimeout(identifier);
+    };
+  }, [msme, mudra, pmgep]);
+
+  useEffect(() => {
     dispatch(formfeildSliceAction.setIsFormValid({ id: 2, isValid: isValid }));
     if (!isValid) {
-      dispatch(formfeildSliceAction.setIndex({ id: 1, set: 2 }));
+      dispatch(formfeildSliceAction.setIndex(2));
     }
   }, [dispatch, isValid]);
   // this only mounts of intialzes the touched state of this component
@@ -70,6 +92,16 @@ const ThirdFeild = (props) => {
   useEffect(() => {
     setIsTouched(touched);
   }, [touched, setIsTouched]);
+
+  const loanSchemeChangeHandler = (e) => {
+    dispatch(
+      formDataAction.setAllExpenseData({
+        id: "Loan Scheme",
+        value: loanSchemeRef.current.value,
+      })
+    );
+  };
+
   return (
     <>
       <h1 className="text-darkBlue font-bold text-xl md:text-2xl">
@@ -92,8 +124,10 @@ const ThirdFeild = (props) => {
         <>
           <input
             type="text"
+            ref={loanSchemeRef}
             placeholder="Loan schme"
             className="w-full text-sm md:text-base p-2 mt-8 rounded-lg border-2 border-fadeBlue outline-none bg-xfadeBlue "
+            onChange={loanSchemeChangeHandler}
           />
           <p className="text-xs md:text-sm mt-2">
             Leave blank if you are not sure about the bank scheme.

@@ -23,7 +23,7 @@ const CostInputFeild = (props) => {
   useEffect(() => {
     const identifier = setTimeout(() => {
       props.onChange(input);
-    }, 700);
+    }, 500);
     return () => {
       clearTimeout(identifier);
     };
