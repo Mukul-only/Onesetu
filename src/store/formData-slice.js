@@ -37,12 +37,12 @@ const formDataSlice = createSlice({
           }
         });
         state.allExpenseSum.allExpenseNeededSum = sum.toFixed(2);
+        state.allExpensedata.allExpenseNeededTotal = sum.toFixed(2);
         if (state.allExpenseSum.allExpenseNeededSum > 0) {
           state.isDataValid.allExpenseNeededValid = true;
         } else {
           state.isDataValid.allExpenseNeededValid = false;
         }
-        // state.allExpensedata.allExpenseNeeded.Sum = sum;
       }
       if (action.payload === 6) {
         const values = Object.values(state.allExpensedata.monthlyExpense);
@@ -53,12 +53,12 @@ const formDataSlice = createSlice({
           }
         });
         state.allExpenseSum.monthlyExpenseSum = sum.toFixed(2);
+        state.allExpensedata.monthlyExpenseTotal = sum.toFixed(2);
         if (state.allExpenseSum.monthlyExpenseSum > 0) {
           state.isDataValid.monthlyExpenseValid = true;
         } else {
           state.isDataValid.monthlyExpenseValid = false;
         }
-        // state.allExpensedata.monthlyExpense.Sum = sum;
       }
 
       state.isFormDataValid =
@@ -86,6 +86,24 @@ const formDataSlice = createSlice({
         state.mounted.monthlyExpenseMounted = false;
         state.isDataValid.monthlyExpenseValid = false;
       }
+    },
+    resetFinal(state) {
+      state.allExpensedata = {
+        "Personal information": {},
+        "Business information": {},
+        allExpenseNeeded: {},
+        monthlyExpense: {},
+      };
+      state.allExpenseSum = { allExpenseNeededSum: 0, monthlyExpenseSum: 0 };
+      state.mounted = {
+        allExpenseNeededMounted: false,
+        monthlyExpenseMounted: false,
+      };
+      state.isDataValid = {
+        allExpenseNeededValid: false,
+        monthlyExpenseValid: false,
+      };
+      state.isFormDataValid = false;
     },
   },
 });

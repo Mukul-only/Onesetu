@@ -57,6 +57,12 @@ const BusinessInfo = (props) => {
       <p className="text-xs md:text-sm">General details of the business</p>
       <div className="mt-10 space-y-8">
         <Textbox id="Business information" label="Address" className="" />
+        <Radio
+          id="Business information"
+          label="Locality"
+          className=""
+          options={["Panchayath-Village", "Town, Municipality, Corporation"]}
+        />
         <Input
           id="Business information"
           label="Pin code"

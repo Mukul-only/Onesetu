@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { formDataAction } from "../store/formData-slice";
 import { formfeildSliceAction } from "../store/formfeild-slice";
+import { userAction } from "../store/user-slice";
 const Input = ({
   inputParams,
   id,
@@ -12,6 +13,9 @@ const Input = ({
   bg,
   validation,
   errMsg,
+  primaryLabel,
+  login,
+  signup,
 }) => {
   const dispatch = useDispatch();
   const {
@@ -31,14 +35,37 @@ const Input = ({
   if (touchedIndex) {
     isTouched = touchedIndex.isTouched;
   }
+
   useEffect(() => {
     setIsTouched(isTouched);
   }, [dispatch, isTouched]);
   useEffect(() => {
     const identifier = setTimeout(() => {
-      dispatch(
-        formDataAction.setAllExpenseData({ id: id, label: label, value: input })
-      );
+      if (primaryLabel) {
+        if (signup) {
+          dispatch(
+            userAction.setSignup({
+              label: primaryLabel,
+              value: input,
+            })
+          );
+        } else if (login) {
+          dispatch(
+            userAction.setLogin({
+              label: primaryLabel,
+              value: input,
+            })
+          );
+        }
+      } else {
+        dispatch(
+          formDataAction.setAllExpenseData({
+            id: id,
+            label: label,
+            value: input,
+          })
+        );
+      }
     }, 500);
     return () => {
       clearTimeout(identifier);
@@ -46,9 +73,14 @@ const Input = ({
   }, [input]);
 
   // set prev value
-  const preValue = useSelector(
-    (state) => state.formdata.allExpensedata[id][label]
-  );
+  const authMethod = login ? "login" : signup ? "signup" : "";
+  const preValue = useSelector((state) => {
+    if (primaryLabel) {
+      return state.user[authMethod][primaryLabel];
+    } else {
+      return state.formdata.allExpensedata[id][label];
+    }
+  });
   useEffect(() => {
     if (preValue) {
       setInput(preValue);
@@ -64,8 +96,11 @@ const Input = ({
     );
   }, [dispatch, isValid]);
   return (
-    <div className={`${className ? className : ""} space-y-2`}>
-      <label htmlFor={label} className="font-bold">
+    <div className={`${className ? className : ""} `}>
+      <label
+        htmlFor={label}
+        className="text-sm md:text-base font-semibold xl:font-bold"
+      >
         {label}
       </label>
       <FormInput
@@ -74,9 +109,10 @@ const Input = ({
         onBlur={inputBlurHandler}
         bg={bg}
         hasError={hasError}
+        className="mt-1"
       />
       {hasError && (
-        <p className="error">
+        <p className="error md:text-sm text-xs">
           {errMsg
             ? errMsg.trim() !== ""
               ? errMsg

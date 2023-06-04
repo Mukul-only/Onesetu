@@ -1,11 +1,23 @@
+import { useEffect } from "react";
 import Button from "../../UI/Button";
 import Card from "../../UI/Card";
 import ProgressBar from "./ProgressBar";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { formDataAction } from "../../store/formData-slice";
 
 const ReportComponent = (props) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      dispatch(
+        formDataAction.setAllExpenseData({ id: "access", value: token })
+      );
+    }
+  }, [dispatch]);
   return (
-    <div className="bg-lightBlue py-10">
+    <div className="bg-grad py-10">
       <Card className="flex flex-col  items-center">
         <h1 className="text-deepBlue text-2xl md:text-3xl font-bold text-center">
           Create Project Report with{" "}

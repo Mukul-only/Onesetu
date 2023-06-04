@@ -6,6 +6,7 @@ import { formfeildSliceAction } from "../../store/formfeild-slice";
 
 const PersonalInfoPage = (props) => {
   const dispatch = useDispatch();
+  const reportData = useSelector((state) => state.formdata.allExpensedata);
   const { isFormValid } = useSelector((state) => state.formfeild);
   const continueHandler = (e) => {
     dispatch(
