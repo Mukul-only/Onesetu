@@ -23,7 +23,7 @@ const ReportComponent = (props) => {
           Create Project Report with{" "}
           <span className="text-darkBlue"> Onesetu</span> <span>❤️</span>
         </h1>
-        <div className="flex items-center mt-12 mb-28">
+        <div className="flex items-end xl:items-center mt-12 mb-28">
           <ProgressBar progress={props.progress} />
         </div>
         <div className="flex flex-col items-center w-full space-y-4">

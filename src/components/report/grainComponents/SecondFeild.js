@@ -5,6 +5,7 @@ import { formfeildSliceAction } from "../../../store/formfeild-slice";
 import FormInput from "../../../UI/FormInput";
 import { formDataAction } from "../../../store/formData-slice";
 const SecondFeild = (props) => {
+  const dispatch = useDispatch();
   const allFeildIsTouched = useSelector(
     (state) => state.formfeild.allFeildIsTouched
   );
@@ -12,13 +13,28 @@ const SecondFeild = (props) => {
     value: input,
     isValid,
     setIsTouched,
+    setInput,
     hasError,
     inputChangeHandler,
     inputBlurHandler,
     reset,
   } = useInput((input) => input.trim().length !== 0);
+  const preValue = useSelector(
+    (state) => state.formdata.allExpensedata["Type of business"]
+  );
+  // this only mounts of intialzes the touched state of this component
+  useEffect(() => {
+    dispatch(
+      formfeildSliceAction.setIsTouched({
+        id: 1,
+        isTouched: false,
+      })
+    );
+    if (preValue) {
+      setInput(preValue);
+    }
+  }, [dispatch]);
 
-  const dispatch = useDispatch();
   useEffect(() => {
     const identifier = setTimeout(() => {
       dispatch(
@@ -40,15 +56,7 @@ const SecondFeild = (props) => {
       })
     );
   }, [isValid, dispatch]);
-  // this only mounts of intialzes the touched state of this component
-  useEffect(() => {
-    dispatch(
-      formfeildSliceAction.setIsTouched({
-        id: 1,
-        isTouched: false,
-      })
-    );
-  }, [dispatch]);
+
   const item = allFeildIsTouched.find((item) => item.id === 1);
   let touched = false;
   if (item) {

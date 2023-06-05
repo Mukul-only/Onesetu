@@ -16,7 +16,13 @@ export const ExpenseFeild = (props) => {
     );
     dispatch(formDataAction.setAllExpenseSum(props.hash));
   };
-  return <CostInputFeild id={props.id} onChange={inputChangeHandler} />;
+  return (
+    <CostInputFeild
+      id={props.id}
+      onChange={inputChangeHandler}
+      hash={props.hash}
+    />
+  );
 };
 
 const MonthlyExpense = (props) => {

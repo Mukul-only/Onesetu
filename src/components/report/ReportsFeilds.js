@@ -55,6 +55,6 @@ const ReportsFeilds = () => {
     }
   }
 
-  return <>{renderFeild}</>;
+  return renderFeild;
 };
 export default ReportsFeilds;

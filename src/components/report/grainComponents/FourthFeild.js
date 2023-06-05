@@ -70,6 +70,11 @@ const FourthFeild = (props) => {
     }
     dispatch(formfeildSliceAction.setNeedFor(needFor));
   }, [isValid, dispatch, needFor]);
+
+  const preValue = useSelector(
+    (state) => state.formdata.allExpensedata["Need for loan"]
+  );
+
   // this only mounts of intialzes the touched state of this component
   useEffect(() => {
     dispatch(
@@ -78,6 +83,15 @@ const FourthFeild = (props) => {
         isTouched: false,
       })
     );
+    if (preValue) {
+      if (preValue === "Term Loan") {
+        setTerm(true);
+      } else if (preValue === "Working Capital Loan") {
+        setWorking(true);
+      } else if (preValue === "Term + Working Capital") {
+        setTw(true);
+      }
+    }
   }, [dispatch]);
   const item = allFeildIsTouched.find((item) => item.id === 3);
   let touched = false;

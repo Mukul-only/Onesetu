@@ -3,6 +3,9 @@ const FormInput = (props) => {
   const [focus, setIsFocus] = useState(false);
   const inputFocusHandler = () => {
     setIsFocus(true);
+    if (props.onFocus) {
+      props.onFocus();
+    }
   };
   const inputBlurHandler = () => {
     setIsFocus(false);

@@ -15,12 +15,27 @@ const FirstFeild = (props) => {
     value: input,
     isValid,
     setIsTouched,
+    setInput,
     hasError,
     inputChangeHandler,
     inputBlurHandler,
     reset,
   } = useInput((input) => input.trim().length !== 0);
-
+  const preValue = useSelector(
+    (state) => state.formdata.allExpensedata["Name of firm"]
+  );
+  // this only mounts of intialzes the touched state of this component
+  useEffect(() => {
+    dispatch(
+      formfeildSliceAction.setIsTouched({
+        id: 0,
+        isTouched: false,
+      })
+    );
+    if (preValue) {
+      setInput(preValue);
+    }
+  }, [dispatch]);
   useEffect(() => {
     const identifier = setTimeout(() => {
       dispatch(
@@ -39,15 +54,7 @@ const FirstFeild = (props) => {
       })
     );
   }, [dispatch, isValid]);
-  // this only mounts of intialzes the touched state of this component
-  useEffect(() => {
-    dispatch(
-      formfeildSliceAction.setIsTouched({
-        id: 0,
-        isTouched: false,
-      })
-    );
-  }, [dispatch]);
+
   const item = allFeildIsTouched.find((item) => item.id === 0);
   let touched = false;
   if (item) {

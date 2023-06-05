@@ -3,11 +3,15 @@ import ReportCard from "../../components/report/ReportCard";
 import ReportComponent from "../../components/report/ReportComponent";
 import PersonalDetails from "../../components/report/personalInfo/PersonalDetails";
 import { formfeildSliceAction } from "../../store/formfeild-slice";
-
+import { useEffect } from "react";
 const PersonalInfoPage = (props) => {
   const dispatch = useDispatch();
   const reportData = useSelector((state) => state.formdata.allExpensedata);
   const { isFormValid } = useSelector((state) => state.formfeild);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   const continueHandler = (e) => {
     dispatch(
       formfeildSliceAction.setIsTouched({

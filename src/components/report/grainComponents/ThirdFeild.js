@@ -46,6 +46,27 @@ const ThirdFeild = (props) => {
     setPmgep(false);
     setMsme(true);
   };
+  const preValue = useSelector(
+    (state) => state.formdata.allExpensedata["Type of loan"]
+  );
+
+  useEffect(() => {
+    dispatch(
+      formfeildSliceAction.setIsTouched({
+        id: 2,
+        isTouched: false,
+      })
+    );
+    if (preValue) {
+      if (preValue === "Mudra Loan") {
+        setMudra(true);
+      } else if (preValue === "PMGEP Loan") {
+        setPmgep(true);
+      } else if (preValue === "MSME Loan") {
+        setMsme(true);
+      }
+    }
+  }, [dispatch]);
 
   useEffect(() => {
     let input = "";
@@ -76,14 +97,7 @@ const ThirdFeild = (props) => {
     }
   }, [dispatch, isValid]);
   // this only mounts of intialzes the touched state of this component
-  useEffect(() => {
-    dispatch(
-      formfeildSliceAction.setIsTouched({
-        id: 2,
-        isTouched: false,
-      })
-    );
-  }, [dispatch]);
+
   const item = allFeildIsTouched.find((item) => item.id === 2);
   let touched = false;
   if (item) {

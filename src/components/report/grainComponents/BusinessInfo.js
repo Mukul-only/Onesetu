@@ -80,7 +80,12 @@ const BusinessInfo = (props) => {
             id="Business information"
             label="Type of registration"
             className=""
-            options={["Proprietorship", "Partnership", "Private ltd"]}
+            options={[
+              "Proprietorship",
+              "Partnership",
+              "Private ltd",
+              "Business not registered",
+            ]}
           />
           <p className="text-xs md:text-sm px-4  my-2 text-gray-500">
             If it’s a single owner then its Proprietership. If multiple

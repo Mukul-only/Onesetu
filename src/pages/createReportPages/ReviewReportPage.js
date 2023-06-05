@@ -3,7 +3,7 @@ import ReportCard from "../../components/report/ReportCard";
 import ReportComponent from "../../components/report/ReportComponent";
 import ReviewReport from "../../components/report/reviewReport/ReviewReport";
 import { formfeildSliceAction } from "../../store/formfeild-slice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { formDataAction } from "../../store/formData-slice";
 import Overlay from "../../UI/Overlay";
 import Register from "../../components/report/reviewReport/Register";
@@ -13,6 +13,8 @@ import Error from "../../components/report/Error";
 import Login from "../../components/report/reviewReport/Login";
 import { userAction } from "../../store/user-slice";
 import { useNavigate } from "react-router-dom";
+import ProgressBar from "../../components/report/ProgressBar";
+import Card from "../../UI/Card";
 const ReviewReportPage = () => {
   const dispatch = useDispatch();
   const { isFormValid } = useSelector((state) => state.formfeild);
@@ -24,6 +26,11 @@ const ReviewReportPage = () => {
   const [showOVerlay, setShowOverlay] = useState(false);
   const { authMethod } = useSelector((state) => state.user);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   const continueHandler = (e) => {
     const token = localStorage.getItem("token");
 
@@ -127,16 +134,15 @@ const ReviewReportPage = () => {
           </div>
         </Overlay>
       </CSSTransition>
-      <ReportComponent
+      {/* <ReportComponent
         progress="2"
         toBack="/createreport/personalinfo"
         toContinue={true}
         onContinue={continueHandler}
       >
-        <ReportCard>
-          <ReviewReport />
-        </ReportCard>
-      </ReportComponent>
+        <ReviewReport />
+      </ReportComponent> */}
+      <ReviewReport />
     </>
   );
 };

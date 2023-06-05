@@ -5,7 +5,11 @@ const ConfirmCostFeild = (props) => {
       <p className={`${props.h ? "text-base md:text-lg font-semibold" : ""}`}>
         {props.title}
       </p>
-      <p className={`min-w-max ${props.h ? "font-semibold" : ""}`}>
+      <p
+        className={`min-w-max ${props.h ? "font-semibold" : ""} ${
+          props.highlight ? "text-cyan-600" : ""
+        }`}
+      >
         ₹ {props.money}
       </p>
     </div>
@@ -32,8 +36,12 @@ const ConfirmCost = (props) => {
           money={marginMoney}
         />
         <hr className="border-t my-4" />
-        <ConfirmCostFeild title="Eligible loan amount" money={eligibleAmount} />
-        <p className="text-xs md:text-sm text-gray-500">
+        <ConfirmCostFeild
+          title="Eligible loan amount"
+          money={eligibleAmount}
+          highlight
+        />
+        <p className="text-xs md:text-sm text-gray-500 max-w-[150px] md:max-w-[400px]">
           Can change all the values after creating the reports.
         </p>
       </div>

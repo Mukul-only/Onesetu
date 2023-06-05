@@ -89,3 +89,6 @@ a {
 .trans-out .div {
   @apply fade-out-bottom;
 }
+.scroll::-webkit-scrollbar {
+  display: none;
+}
