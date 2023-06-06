@@ -2,13 +2,21 @@ import { useEffect } from "react";
 import Button from "../../UI/Button";
 import Card from "../../UI/Card";
 import ProgressBar from "./ProgressBar";
+import { useSelector } from "react-redux";
 import { Link, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { formDataAction } from "../../store/formData-slice";
 
 const ReportComponent = (props) => {
   const dispatch = useDispatch();
+  const { isFormValid } = useSelector((state) => state.formfeild);
+  const { isFormDataValid } = useSelector((state) => state.formdata);
+  const { mounted } = useSelector((state) => state.formdata);
   const [searchParams] = useSearchParams();
+  const dataValidity =
+    mounted.allExpenseNeededMounted || mounted.monthlyExpenseMounted
+      ? isFormDataValid
+      : true;
   const isEdit = searchParams.get("mode") === "edit";
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -18,6 +26,11 @@ const ReportComponent = (props) => {
       );
     }
   }, [dispatch]);
+  const gotoHandler = (e) => {
+    if (!(isFormValid && isEdit && dataValidity)) {
+      e.preventDefault();
+    }
+  };
 
   return (
     <div className="bg-lightBlue py-10">
@@ -34,6 +47,7 @@ const ReportComponent = (props) => {
             <Link
               to="/createreport/review"
               className="text-2xl lg:text-4xl text-Blue-500"
+              onClick={gotoHandler}
             >
               {"->"}
             </Link>

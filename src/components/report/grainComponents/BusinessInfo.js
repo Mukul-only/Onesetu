@@ -64,6 +64,7 @@ const BusinessInfo = (props) => {
           id="Business information"
           label="Locality"
           className=""
+          subTitle="select from below"
           options={["Panchayath-Village", "Town, Municipality, Corporation"]}
         />
         <Input

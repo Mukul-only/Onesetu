@@ -23,6 +23,7 @@ const BusinessInfoPage = () => {
   }, [key]);
   useEffect(() => {
     dispatch(formfeildSliceAction.setIndex(0));
+
     return () => {
       dispatch(formfeildSliceAction.reset());
     };

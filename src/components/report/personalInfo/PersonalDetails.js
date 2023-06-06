@@ -32,6 +32,7 @@ const PersonalDetails = (props) => {
         <Radio
           id="Personal information"
           label="Gender"
+          subTitle="select from below"
           className=""
           options={["Male", "Female", "Non-binary", "Can't disclose"]}
         />
@@ -51,6 +52,7 @@ const PersonalDetails = (props) => {
           id="Personal information"
           label="Social category"
           className=""
+          subTitle="select from below"
           options={[
             "General",
             "OBC",
