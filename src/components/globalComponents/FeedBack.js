@@ -16,34 +16,34 @@ const FeedBack = (props) => {
   const [flag, setFlag] = useState(false);
   let intervalBk, intervalFd;
 
-  // useEffect(() => {
-  //   const scrollWidth = scrollRef.current?.scrollWidth - window.innerWidth;
+  useEffect(() => {
+    const scrollWidth = scrollRef.current?.scrollWidth - window.innerWidth;
 
-  //   if (flag === false) {
-  //     let i = 0;
-  //     intervalFd = setInterval(() => {
-  //       scrollRef.current?.scrollTo(i, 0);
-  //       // console.log(i);
-  //       i += 0.15;
+    if (flag === false) {
+      let i = 0;
+      intervalFd = setInterval(() => {
+        scrollRef.current?.scrollTo(i, 0);
+        // console.log(i);
+        i += 0.15;
 
-  //       if (i > scrollWidth) {
-  //         setFlag(true);
-  //         clearInterval(intervalFd);
-  //       }
-  //     }, 5);
-  //   } else if (flag === true) {
-  //     let i = scrollWidth;
-  //     intervalBk = setInterval(() => {
-  //       scrollRef.current?.scrollTo(i, 0);
-  //       // console.log(i);
-  //       i -= 0.15;
-  //       if (i < 0) {
-  //         setFlag(false);
-  //         clearInterval(intervalBk);
-  //       }
-  //     }, 5);
-  //   }
-  // }, [flag]);
+        if (i > scrollWidth) {
+          setFlag(true);
+          clearInterval(intervalFd);
+        }
+      }, 5);
+    } else if (flag === true) {
+      let i = scrollWidth;
+      intervalBk = setInterval(() => {
+        scrollRef.current?.scrollTo(i, 0);
+        // console.log(i);
+        i -= 0.15;
+        if (i < 0) {
+          setFlag(false);
+          clearInterval(intervalBk);
+        }
+      }, 5);
+    }
+  }, [flag]);
 
   useEffect(() => {
     return () => {

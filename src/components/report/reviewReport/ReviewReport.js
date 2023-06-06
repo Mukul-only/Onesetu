@@ -13,10 +13,12 @@ import { Link } from "react-router-dom";
 import { formfeildSliceAction } from "../../../store/formfeild-slice";
 
 const ReviewReport = (props) => {
-  const projectName = useSelector(
+  let projectName = useSelector(
     (state) => state.formdata.allExpensedata["Name of firm"]
   );
-
+  if (projectName?.length >= 8) {
+    projectName = projectName.slice(0, 8) + "...";
+  }
   return (
     <>
       <section id="review" className="bg-grad pb-64">

@@ -1,6 +1,7 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import check from "./check.svg";
+import { formfeildSliceAction } from "../../store/formfeild-slice";
 
 const ProgressElement = (props) => {
   const { isFormValid } = useSelector((state) => state.formfeild);
@@ -8,12 +9,14 @@ const ProgressElement = (props) => {
   const { mounted } = useSelector((state) => state.formdata);
   const [searchParams] = useSearchParams();
   const isEdit = searchParams.get("mode") === "edit";
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const dataValidity =
     mounted.allExpenseNeededMounted || mounted.monthlyExpenseMounted
       ? isFormDataValid
       : true;
   const clickHandler = () => {
+    dispatch(formfeildSliceAction.setAllTouched());
     if (isFormValid && isEdit && dataValidity) {
       navigate(props.to);
     }

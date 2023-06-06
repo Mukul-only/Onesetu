@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { Link, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { formDataAction } from "../../store/formData-slice";
-
+import { formfeildSliceAction } from "../../store/formfeild-slice";
 const ReportComponent = (props) => {
   const dispatch = useDispatch();
   const { isFormValid } = useSelector((state) => state.formfeild);
@@ -27,6 +27,7 @@ const ReportComponent = (props) => {
     }
   }, [dispatch]);
   const gotoHandler = (e) => {
+    dispatch(formfeildSliceAction.setAllTouched());
     if (!(isFormValid && isEdit && dataValidity)) {
       e.preventDefault();
     }
