@@ -73,7 +73,7 @@ const SecondFeild = (props) => {
 
   return (
     <>
-      <h1 className="text-darkBlue font-bold text-xl md:text-2xl">
+      <h1 className="report-label">
         What’s type of business are you planning?
       </h1>
       <p className="text-xs md:text-sm">

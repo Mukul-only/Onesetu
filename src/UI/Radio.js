@@ -62,15 +62,23 @@ export default Radio;
 
 const RadioInput = ({ title, name, onChange, checked }) => {
   return (
-    <div className="space-x-1">
+    <div className="flex ">
       <input
         id={title}
         type="radio"
         name={name}
         onChange={onChange}
         checked={checked}
+        className="hidden"
       />
-      <label htmlFor={title}>{title}</label>
+      <label
+        htmlFor={title}
+        className={`border border-Blue-500 rounded-lg ${
+          checked ? "bg-Blue-500 text-white" : " text-black bg-white"
+        } duration-500 hover:shadow-lg px-4 py-2 cursor-pointer`}
+      >
+        {title}
+      </label>
     </div>
   );
 };

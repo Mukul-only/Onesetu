@@ -104,11 +104,9 @@ const FourthFeild = (props) => {
 
   return (
     <>
-      <h1 className="text-darkBlue font-bold text-xl md:text-2xl">
-        Why do you need loan?
-      </h1>
+      <h1 className="report-label">Why do you need loan?</h1>
       <p className="text-xs md:text-sm">please select the purpose of loan.</p>
-      <div className="flex gap-8 md:gap-4 xl:gap-8 mt-4 flex-wrap">
+      <div className="flex gap-4 md:gap-4 xl:gap-8 mt-4 flex-wrap">
         <RadioInput
           onClick={termClickHandler}
           value={term}

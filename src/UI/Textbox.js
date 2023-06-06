@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { formDataAction } from "../store/formData-slice";
 import { formfeildSliceAction } from "../store/formfeild-slice";
-const Textbox = ({ id, label, className }) => {
+const Textbox = ({ id, label, className, textarea }) => {
   const [value, setValue] = useState("");
   const [focus, setFocus] = useState(false);
   const { allFeildIsTouched } = useSelector((state) => state.formfeild);
@@ -72,6 +72,7 @@ const Textbox = ({ id, label, className }) => {
             : `border-fadeBlue ${focus ? "bg-white" : "bg-xfadeBlue"}`
         } duration-300`}
         value={value}
+        {...textarea}
         onChange={inputChangeHandler}
         onBlur={inputBlurHandler}
         onFocus={textFocusHandler}

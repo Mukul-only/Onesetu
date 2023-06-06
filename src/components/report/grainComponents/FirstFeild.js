@@ -71,9 +71,7 @@ const FirstFeild = (props) => {
 
   return (
     <>
-      <h1 className="text-darkBlue font-bold text-xl md:text-2xl">
-        What’s the name of your firm?
-      </h1>
+      <h1 className="report-label">What’s the name of your firm?</h1>
       <p className="text-xs md:text-sm">Enter the whole legal name.</p>
 
       <FormInput

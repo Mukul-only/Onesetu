@@ -118,14 +118,12 @@ const ThirdFeild = (props) => {
 
   return (
     <>
-      <h1 className="text-darkBlue font-bold text-xl md:text-2xl">
-        What type of loan do you need?
-      </h1>
+      <h1 className="report-label">What type of loan do you need?</h1>
       <p className="text-xs md:text-sm">
         click the most applicable one to select.
       </p>
 
-      <div className="flex space-x-8 mt-4">
+      <div className="flex gap-4 lg:gap-8 mt-4 flex-wrap">
         <RadioInput onClick={mudraClickHandler} value={mudra} label="Mudra" />
         <RadioInput onClick={pmgepClickHandler} value={pmgep} label="PMGEP" />
         <RadioInput

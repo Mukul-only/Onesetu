@@ -51,12 +51,15 @@ const BusinessInfo = (props) => {
   }, [dispatch]);
   return (
     <>
-      <h1 className="text-darkBlue font-bold text-xl md:text-2xl">
-        Business information
-      </h1>
+      <h1 className="report-label">Business information</h1>
       <p className="text-xs md:text-sm">General details of the business</p>
       <div className="mt-10 space-y-8">
-        <Textbox id="Business information" label="Address" className="" />
+        <Textbox
+          id="Business information"
+          label="Address"
+          className=""
+          textarea={{ placeholder: "122/2 street-example,299882,City " }}
+        />
         <Radio
           id="Business information"
           label="Locality"
@@ -67,6 +70,7 @@ const BusinessInfo = (props) => {
           id="Business information"
           label="Pin code"
           validation={(value) => pinValidation(value)}
+          inputParams={{ type: "tel", placeholder: "enter pincode/postalcode" }}
           errMsg={
             !pinValidation(pinValue)
               ? pinValue !== ""
@@ -97,7 +101,7 @@ const BusinessInfo = (props) => {
           id="Business information"
           label="Contact phone number"
           validation={(value) => phoneValidation(value)}
-          inputParams={{ placeholder: "Contact Phone" }}
+          inputParams={{ type: "tel", placeholder: "contact Phone" }}
           errMsg={
             !phoneValidation(phoneValue)
               ? phoneValue !== ""
@@ -109,7 +113,7 @@ const BusinessInfo = (props) => {
         <Input
           id="Business information"
           label="Contact email"
-          inputParams={{ placeholder: "Contact email" }}
+          inputParams={{ type: "email", placeholder: "Contact email" }}
           validation={(value) => email.test(value)}
           errMsg="please enter a valid email!"
         />

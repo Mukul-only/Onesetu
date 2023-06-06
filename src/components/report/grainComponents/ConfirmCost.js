@@ -22,10 +22,8 @@ const ConfirmCost = (props) => {
   const eligibleAmount = (sum - marginMoney).toFixed(2);
   return (
     <>
-      <h1 className="text-darkBlue font-bold text-xl md:text-2xl">
-        Confirm the figures you have entered
-      </h1>
-      <p className="text-xs md:text-sm">
+      <h1 className="report-label">Confirm the figures you have entered</h1>
+      <p className="text-xs md:text-sm text-gray-400">
         Adjust the loan amount by increasing the initial expenses of edit loan
         details after creating the report.
       </p>

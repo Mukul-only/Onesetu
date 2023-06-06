@@ -19,7 +19,7 @@ const ReportComponent = (props) => {
   return (
     <div className="bg-lightBlue py-10">
       <Card className="flex flex-col  items-center">
-        <h1 className="text-deepBlue text-2xl md:text-3xl font-bold text-center">
+        <h1 className="text-deepBlue text-2xl md:text-3xl font-bold text-center tracking-tight">
           Create Project Report with{" "}
           <span className="text-Blue-500"> Onesetu</span> <span>❤️</span>
         </h1>

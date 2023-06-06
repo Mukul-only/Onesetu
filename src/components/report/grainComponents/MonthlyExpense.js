@@ -36,9 +36,7 @@ const MonthlyExpense = (props) => {
 
   return (
     <>
-      <h1 className="text-darkBlue font-bold text-xl md:text-2xl">
-        Monthly Expense
-      </h1>
+      <h1 className="report-label">Monthly Expense</h1>
       <p className="text-xs md:text-sm">
         please select all your monthly expenses.
       </p>
@@ -47,7 +45,7 @@ const MonthlyExpense = (props) => {
         <ExpenseFeild id="Salary" hash={6} />
         <ExpenseFeild id="Procurement" hash={6} />
         <ExpenseFeild id="Stationary expenses" hash={6} />
-        <ExpenseFeild id="Electricity/ water" hash={6} />
+        <ExpenseFeild id="Electricity / water" hash={6} />
         <ExpenseFeild id="Repair & maintenance" hash={6} />
         <ExpenseFeild id="Transportation" hash={6} />
         <ExpenseFeild id="Internet Charges" hash={6} />

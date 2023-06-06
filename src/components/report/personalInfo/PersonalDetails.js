@@ -17,9 +17,7 @@ const PersonalDetails = (props) => {
 
   return (
     <>
-      <h1 className="text-darkBlue font-bold text-xl md:text-2xl">
-        Personal information
-      </h1>
+      <h1 className="report-label">Personal information</h1>
       <p className="text-xs md:text-sm">
         General details of the promoter of the business
       </p>

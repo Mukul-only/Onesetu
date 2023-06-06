@@ -9,9 +9,11 @@ const Login = (props) => {
     dispatch(
       formfeildSliceAction.setIsTouched({ id: "Login", setIsTouched: false })
     );
+    return () => {
+      dispatch(formfeildSliceAction.reset());
+    };
   }, [dispatch]);
   const authChangeHandler = () => {
-    dispatch(formfeildSliceAction.reset());
     dispatch(userAction.setAuthMethod("signup"));
   };
   return (

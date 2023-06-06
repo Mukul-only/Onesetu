@@ -6,6 +6,8 @@ input,
 textarea,
 button,
 select,
+label,
+div,
 a {
   -webkit-tap-highlight-color: transparent;
 }
@@ -91,4 +93,8 @@ a {
 }
 .scroll::-webkit-scrollbar {
   display: none;
+}
+
+.report-label {
+  @apply text-darkBlue font-bold text-base md:text-2xl tracking-tighter;
 }

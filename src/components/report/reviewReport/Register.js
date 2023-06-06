@@ -11,15 +11,18 @@ const Register = () => {
     dispatch(
       formfeildSliceAction.setIsTouched({ id: "Register", setIsTouched: false })
     );
+    return () => {
+      dispatch(formfeildSliceAction.reset());
+    };
   }, [dispatch]);
   const email = /^[a-zA-Z0-9](\.?[a-zA-Z0-9]){3,}@[a-zA-Z]{4,}\.[a-z]{2,4}$/;
   const phone = /^\d{10}$/;
 
   const { password } = useSelector((state) => state.user.signup);
   const authChangeHandler = () => {
-    dispatch(formfeildSliceAction.reset());
     dispatch(userAction.setAuthMethod("login"));
   };
+
   return (
     <>
       <h1 className="text-darkBlue font-bold text-xl md:text-2xl">Register</h1>
