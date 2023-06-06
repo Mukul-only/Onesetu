@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { formfeildSliceAction } from "../../../store/formfeild-slice";
 import passwordValidation from "../../../util/passwordValidation";
 import { userAction } from "../../../store/user-slice";
+import { Link } from "react-router-dom";
 const Register = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -26,8 +27,9 @@ const Register = () => {
         <Input
           signup
           id="Register"
-          inputParams={{ type: "text", placeholder: "enter username" }}
-          label="User name"
+          label="Username"
+          labelNone
+          inputParams={{ type: "text", placeholder: "Username" }}
           primaryLabel="username"
           className=""
           validation={(value) => value.trim().length !== 0}
@@ -36,8 +38,9 @@ const Register = () => {
         <Input
           signup
           id="Register"
-          inputParams={{ type: "text", placeholder: "phno." }}
-          label="Phone number"
+          label="Phone no."
+          labelNone
+          inputParams={{ type: "tel", placeholder: "Phone/contact" }}
           primaryLabel="mobile"
           className=""
           validation={(value) => phone.test(value)}
@@ -46,8 +49,9 @@ const Register = () => {
         <Input
           signup
           id="Register"
-          inputParams={{ type: "text", placeholder: "email" }}
           label="Email"
+          labelNone
+          inputParams={{ type: "email", placeholder: "Email" }}
           primaryLabel="email"
           className=""
           validation={(value) => email.test(value)}
@@ -57,8 +61,9 @@ const Register = () => {
         <Input
           signup
           id="Register"
+          label="Passoword"
+          labelNone
           inputParams={{ type: "password", placeholder: "password" }}
-          label="Password"
           primaryLabel="password"
           className=""
           validation={(value) =>
@@ -69,16 +74,27 @@ const Register = () => {
         <Input
           signup
           id="Register"
-          inputParams={{ type: "password", placeholder: "confirm password" }}
           label="Confirm password"
+          labelNone
+          inputParams={{ type: "password", placeholder: "confirm password" }}
           primaryLabel="confirm_password"
           className=""
           validation={(value) => value === password}
           errMsg="confirm password and password did not  match"
         />
         <p className="text-xs md:text-sm text-gray-400">
-          By signing up, I agree to the Onesetu Privacy Policy and Terms of
-          Service.
+          By signing up, I agree to the Onesetu{" "}
+          <Link to="/terms">
+            <span className="text-blue-600 hover:text-blue-800 cursor-pointer">
+              Privacy Policy
+            </span>
+          </Link>{" "}
+          and{" "}
+          <Link to="/terms">
+            <span className="text-blue-600 hover:text-blue-800 cursor-pointer">
+              Terms of Service.
+            </span>
+          </Link>
         </p>
         <p className="text-sm">
           Already a user?{" "}

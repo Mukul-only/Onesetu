@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import ReportCard from "../../components/report/ReportCard";
-import ReportComponent from "../../components/report/ReportComponent";
+
 import ReviewReport from "../../components/report/reviewReport/ReviewReport";
 import { formfeildSliceAction } from "../../store/formfeild-slice";
 import { useEffect, useState } from "react";
@@ -13,8 +13,7 @@ import Error from "../../components/report/Error";
 import Login from "../../components/report/reviewReport/Login";
 import { userAction } from "../../store/user-slice";
 import { useNavigate } from "react-router-dom";
-import ProgressBar from "../../components/report/ProgressBar";
-import Card from "../../UI/Card";
+
 const ReviewReportPage = () => {
   const dispatch = useDispatch();
   const { isFormValid } = useSelector((state) => state.formfeild);
@@ -22,7 +21,8 @@ const ReviewReportPage = () => {
   const { signup } = useSelector((state) => state.user);
   const { login } = useSelector((state) => state.user);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState({});
+  const [hasError, setHasError] = useState(false);
   const [showOVerlay, setShowOverlay] = useState(false);
   const { authMethod } = useSelector((state) => state.user);
   const navigate = useNavigate();
@@ -30,14 +30,16 @@ const ReviewReportPage = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
-
+  useEffect(() => {
+    setHasError(false);
+  }, [authMethod]);
   const continueHandler = (e) => {
     const token = localStorage.getItem("token");
 
     if (token && token !== "undefined") {
-      console.log("found");
+      // console.log("found");
       dispatch(formDataAction.resetFinal());
-      alert("Report created successfully");
+      alert("Report will download shortly.....");
       navigate("/");
     } else {
       e.preventDefault();
@@ -75,8 +77,15 @@ const ReviewReportPage = () => {
 
       const resData = await response.json();
       if (resData.status_code === 200) {
-        setError(resData.error);
+        setHasError(true);
+        if (authMethod === "login") {
+          setError({ error: [resData.error] });
+        } else if (authMethod === "signup") {
+          setError(resData.error);
+        }
       } else {
+        setHasError(false);
+
         const token = resData.access;
         dispatch(
           formDataAction.setAllExpenseData({
@@ -89,11 +98,12 @@ const ReviewReportPage = () => {
 
         setTimeout(() => {
           dispatch(userAction.reset());
+          dispatch(formfeildSliceAction.reset());
         }, 500);
       }
-      console.log(resData);
+      // console.log(resData);
     } catch (error) {
-      setError(error.message);
+      setError({ error: [error.message] });
     }
     setIsSubmitting(false);
   };
@@ -115,12 +125,13 @@ const ReviewReportPage = () => {
             <ReportCard
               className="max-h-[94vh] overflow-y-auto "
               animationDisable
+              sideBarNone
             >
               {authMethod === "signup" ? <Register /> : <Login />}
 
-              {error && <Error error={error} className="mt-6" />}
+              {hasError && <Error error={error} className="mt-6" />}
               <Button
-                className="block mx-auto px-10 py-2 mt-8 bg-darkBlue  text-white"
+                className="block mx-auto px-10 py-2 mt-8 bg-Blue-500  text-white"
                 onClick={registerHandler}
                 disabled={isSubmitting ? true : false}
               >
@@ -142,7 +153,7 @@ const ReviewReportPage = () => {
       >
         <ReviewReport />
       </ReportComponent> */}
-      <ReviewReport />
+      <ReviewReport onClick={continueHandler} />
     </>
   );
 };

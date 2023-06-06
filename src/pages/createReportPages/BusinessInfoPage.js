@@ -64,7 +64,7 @@ const BusinessInfoPage = () => {
 
       <div>
         <Button
-          className="w-44 py-3  mt-10 font-semibold bg-darkBlue hover:bg-opacity-90 duration-300 text-white"
+          className="w-44 py-3  mt-10 font-semibold bg-Blue-500 hover:bg-opacity-90 duration-300 text-white"
           onClick={showNextFeildHandler}
         >
           Save & Continue

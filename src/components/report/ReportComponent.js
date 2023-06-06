@@ -17,11 +17,11 @@ const ReportComponent = (props) => {
     }
   }, [dispatch]);
   return (
-    <div className="bg-grad py-10">
+    <div className="bg-lightBlue py-10">
       <Card className="flex flex-col  items-center">
         <h1 className="text-deepBlue text-2xl md:text-3xl font-bold text-center">
           Create Project Report with{" "}
-          <span className="text-darkBlue"> Onesetu</span> <span>❤️</span>
+          <span className="text-Blue-500"> Onesetu</span> <span>❤️</span>
         </h1>
         <div className="flex items-end xl:items-center mt-12 mb-28">
           <ProgressBar progress={props.progress} />
@@ -43,7 +43,7 @@ const ReportComponent = (props) => {
           {props.toContinue && (
             <Link to={props.toContinue}>
               <Button
-                className="w-32 text-sm md:text-lg md:w-44 py-2 bg-darkBlue text-white "
+                className="w-32 text-sm md:text-lg md:w-44 py-2 bg-Blue-500 text-white "
                 onClick={props.onContinue}
               >
                 Save & Continue

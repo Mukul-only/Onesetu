@@ -21,7 +21,7 @@ const Login = (props) => {
         <Input
           login
           id="Login"
-          inputParams={{ type: "text", placeholder: "enter username" }}
+          inputParams={{ type: "text", placeholder: "Username" }}
           label="User name"
           primaryLabel="username"
           className=""
@@ -30,7 +30,7 @@ const Login = (props) => {
         <Input
           login
           id="Login"
-          inputParams={{ type: "password", placeholder: "password" }}
+          inputParams={{ type: "password", placeholder: "Password" }}
           label="Password"
           primaryLabel="password"
           className=""

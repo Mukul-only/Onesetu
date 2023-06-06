@@ -5,7 +5,7 @@ const ProgressElement = (props) => {
       {props.isActive && <img src={check} className="w-5 md:w-8" />}
       <p
         className={`font-semibold text-xs md:text-lg text-center ${
-          props.isActive ? "text-darkBlue" : "text-grayY"
+          props.isActive ? "text-Blue-500" : "text-grayY"
         }`}
       >
         {props.title}
@@ -23,8 +23,8 @@ const ProgressBar = (props) => {
       <div
         className={`${line} ${
           props.progress === "1" || props.progress === "2"
-            ? "bg-darkBlue"
-            : "bg-cyanY"
+            ? "bg-Blue-500"
+            : "bg-Green-500"
         }`}
       />
       <ProgressElement
@@ -34,7 +34,7 @@ const ProgressBar = (props) => {
 
       <div
         className={`${line} ${
-          props.progress === "2" ? "bg-darkBlue" : "bg-cyanY"
+          props.progress === "2" ? "bg-Blue-500" : "bg-Green-500"
         }`}
       />
       <ProgressElement

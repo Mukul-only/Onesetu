@@ -6,11 +6,11 @@ export const RadioInput = (props) => {
   return (
     <div
       onClick={props.onClick}
-      className={`flex flex-col justify-center text-sm md:text-base border text-center md:text-left   rounded-lg cursor-pointer px-3 md:px-6 py-2 ${
+      className={`flex flex-col justify-center  text-sm md:text-base border text-center md:text-left   rounded-lg cursor-pointer px-3 md:px-6 py-2 ${
         props.value
-          ? "bg-cyanY text-white"
-          : "bg-white text-black hover:bg-cyan-500 hover:text-white"
-      } duration-200 ease-in-out`}
+          ? "bg-Blue-500 text-white"
+          : "bg-white text-black hover:border-Blue-500 hover:shadow-lg "
+      } duration-500 ease-in-out`}
     >
       <h2 className="font-semibold ">{props.label}</h2>
       <p className="hidden md:block text-sm">{props.desc}</p>

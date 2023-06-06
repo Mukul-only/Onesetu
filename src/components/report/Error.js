@@ -1,7 +1,12 @@
 const Error = (props) => {
-  const errorArray = Object.values(props.error);
   let errorMessages = [];
-  errorArray.map((item) => item.map((message) => errorMessages.push(message)));
+  if (props.error) {
+    const errorArray = Object.values(props.error);
+    errorMessages = [];
+    errorArray.map((item) =>
+      item.map((message) => errorMessages.push(message))
+    );
+  }
 
   return (
     <div

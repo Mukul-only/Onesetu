@@ -8,7 +8,7 @@ const Modal = (props) => {
       >
         <img
           src={cross}
-          className="absolute w-10 h-10 rounded-full p-2 top-4 right-4 bg-darkBlue cursor-pointer"
+          className="absolute w-7 h-7 lg:w-10 lg:h-10 rounded-full p-2 top-4 right-4 bg-Blue-500 cursor-pointer"
           onClick={() => {
             props.setState(false);
           }}

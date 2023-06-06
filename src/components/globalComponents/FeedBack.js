@@ -1,6 +1,7 @@
 import Card from "../../UI/Card";
 import quote from "../.././assets/quote.svg";
 import { useEffect, useRef, useState } from "react";
+import useIsInViewport from "../hooks/use-isInViewport";
 const FeedbackCard = ({ text }) => {
   return (
     <div className="flex space-x-3 items-start rounded-2xl shadow-exl border px-6 py-10 lg:p-16 font-[500] text-sm lg:text-lg min-w-[20rem] lg:min-w-[32rem]  ">
@@ -11,8 +12,10 @@ const FeedbackCard = ({ text }) => {
 };
 const FeedBack = (props) => {
   const scrollRef = useRef();
+
   const [flag, setFlag] = useState(false);
-  let intervalFd, intervalBk;
+  let intervalBk, intervalFd;
+
   useEffect(() => {
     const scrollWidth = scrollRef.current?.scrollWidth - window.innerWidth;
 
@@ -20,8 +23,9 @@ const FeedBack = (props) => {
       let i = 0;
       intervalFd = setInterval(() => {
         scrollRef.current?.scrollTo(i, 0);
-
+        // console.log(i);
         i += 0.15;
+
         if (i > scrollWidth) {
           setFlag(true);
           clearInterval(intervalFd);
@@ -31,7 +35,7 @@ const FeedBack = (props) => {
       let i = scrollWidth;
       intervalBk = setInterval(() => {
         scrollRef.current?.scrollTo(i, 0);
-
+        // console.log(i);
         i -= 0.15;
         if (i < 0) {
           setFlag(false);

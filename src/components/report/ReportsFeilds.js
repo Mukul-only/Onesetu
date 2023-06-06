@@ -4,10 +4,11 @@ import SecondFeild from "./grainComponents/SecondFeild";
 import ThirdFeild from "./grainComponents/ThirdFeild";
 import FourthFeild from "./grainComponents/FourthFeild";
 import SelectAllFeild from "./grainComponents/SelectAllFeild";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ConfirmCost from "./grainComponents/ConfirmCost";
 import MonthlyExpense from "./grainComponents/MonthlyExpense";
 import BusinessInfo from "./grainComponents/BusinessInfo";
+import { formfeildSliceAction } from "../../store/formfeild-slice";
 const REPORT_FEILD = [
   <ReportCard key="0">
     <FirstFeild />
@@ -29,6 +30,7 @@ const REPORT_FEILD = [
   </ReportCard>,
 ];
 const ReportsFeilds = () => {
+  const dispatch = useDispatch();
   const index = useSelector((state) => state.formfeild.index);
   const needFor = useSelector((state) => state.formfeild.needFor);
   const renderFeild = [];
@@ -49,7 +51,9 @@ const ReportsFeilds = () => {
         );
       }
     } else {
-      if (i === 4) i = 6;
+      if (i === 4) {
+        i = 6;
+      }
       renderFeild.push(REPORT_FEILD[ar]);
       ar++;
     }

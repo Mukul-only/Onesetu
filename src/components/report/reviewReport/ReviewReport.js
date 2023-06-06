@@ -9,10 +9,14 @@ import down from "../../../assets/download.svg";
 import { useSelector } from "react-redux";
 import LoanBanner from "./LoanBanner";
 import FeedBack from "../../globalComponents/FeedBack";
+import { Link } from "react-router-dom";
+
+import useIsInViewport from "../../hooks/use-isInViewport";
 const ReviewReport = (props) => {
   const projectName = useSelector(
     (state) => state.formdata.allExpensedata["Name of firm"]
   );
+
   return (
     <>
       <section id="review" className="bg-grad pb-64">
@@ -35,10 +39,12 @@ const ReviewReport = (props) => {
             them for free and download the updated version as needed.
           </p>
           <div className="relative space-x-2 md:space-x-4  text-sm xl:text-lg font-semibold my-10">
-            <Button className="min-w-0 w-32 xl:w-[294px] py-3 xl:py-4 text-Blue-500 hover:bg-Blue-500 hover:text-white duration-500">
-              Edit Report
-            </Button>
-            <Button className="min-w-0 w-32 md:w-36 xl:w-[294px] py-3 xl:py-4 border-Purple-500 bg-Purple-500 text-white hover:bg-white hover:text-Purple-500 duration-500">
+            <Link to="/createreport">
+              <Button className="min-w-0 w-32 xl:w-[294px] py-3 xl:py-4 text-Blue-500 hover:scale-110 duration-500">
+                Edit Report
+              </Button>
+            </Link>
+            <Button className="min-w-0 w-32 md:w-36 xl:w-[294px] py-3 xl:py-4 border-Purple-500 bg-Purple-500 text-white hover:scale-110 duration-500">
               Apply for loan
             </Button>
             <img
@@ -63,17 +69,23 @@ const ReviewReport = (props) => {
               {projectName}
             </h1>
           </div>
-          <button className="absolute flex justify-center items-center space-x-8 xl:space-x-20 border-2 text-sm smm:text-lg font-semibold xl:font-bold xl:text-3xl text-white shadow-box-5 border-Blue-500 bg-Blue-500 bottom-[10%] left-1/2 -translate-x-1/2 px-7 sm:px-10 md:px-14 xl:w-[654px] py-2 sm:py-3  xl:py-6 rounded-full hover:scale-110 duration-500 hover:bg-white hover:text-Blue-500">
+          <button
+            className="absolute flex justify-center items-center space-x-8 xl:space-x-20 border-2 text-sm smm:text-lg font-semibold xl:font-bold xl:text-3xl text-white shadow-box-5 border-Blue-500 bg-Blue-500 bottom-[10%] left-1/2 -translate-x-1/2 px-7 sm:px-10 md:px-14 xl:w-[654px] py-2 sm:py-3  xl:py-6 rounded-full hover:scale-110 duration-500 hover:bg-white hover:text-Blue-500"
+            onClick={props.onClick}
+          >
             <span className="whitespace-nowrap">Download Report</span>
             <img src={down} className="w-5 smm:w-8 md:w-auto" />
           </button>
         </div>
       </Card>
+
       <LoanBanner />
-      <FeedBack className="my-32">
+
+      <FeedBack className="">
         <h1 className="text-3xl xl:text-5xl font-bold tracking-tighter max-w-xl text-center mx-auto text-deepBlue-800">
           MSME Love <span className="text-Blue-500">Onesetu </span>
         </h1>
+
         <p className="max-w-xl mx-auto text-center font-medium text-base xl:text-xl mt-6 xl:mt-10 text-deepBlue-800">
           1000+ Reviews Of Delighted Clients with onesetu
         </p>

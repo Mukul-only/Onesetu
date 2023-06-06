@@ -7,7 +7,7 @@ const ConfirmCostFeild = (props) => {
       </p>
       <p
         className={`min-w-max ${props.h ? "font-semibold" : ""} ${
-          props.highlight ? "text-cyan-600" : ""
+          props.highlight ? "text-Blue-500" : ""
         }`}
       >
         ₹ {props.money}

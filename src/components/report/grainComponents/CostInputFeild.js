@@ -50,7 +50,7 @@ const CostInputFeild = ({ hash, id, onChange }) => {
         htmlFor={id}
         className={`flex justify-start pl-2 pr-1 items-center min-w-[140px] md:min-w-[12rem] rounded-lg border-2 space-x-2 cursor-pointer ${
           highlight
-            ? "border-darkBlue bg-darkBlue text-white"
+            ? "border-Blue-500 bg-Blue-500 text-white"
             : "border-fadeBlue bg-xfadeBlue text-black"
         }`}
       >

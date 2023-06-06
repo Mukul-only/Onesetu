@@ -30,6 +30,7 @@ module.exports = {
         "Blue-500": "#2F77F1",
         "Purple-500": "#7C6FF5",
         "Purple-600": "#4F479D",
+        "Green-500": "rgba(74, 223, 147, 1)",
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],

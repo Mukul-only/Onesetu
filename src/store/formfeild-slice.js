@@ -4,7 +4,7 @@ const formfeildSlice = createSlice({
   name: "formfeild",
   initialState: {
     allFeildValidity: [],
-    isFormValid: true,
+    isFormValid: false,
     allFeildIsTouched: [],
     index: 0,
     needFor: "",
@@ -71,6 +71,9 @@ const formfeildSlice = createSlice({
       } else {
         state.index++;
       }
+      if (state.needFor === "working" && state.index === 4) {
+        state.index = 6;
+      }
 
       // if (action.payload.id === 0) {
       //   if (state.index < 7) {
@@ -86,8 +89,11 @@ const formfeildSlice = createSlice({
       //   state.index = action.payload.set;
       // }
     },
+
     setNeedFor(state, action) {
       state.needFor = action.payload;
+      if (action.payload === "working") {
+      }
     },
     reset(state) {
       state.allFeildValidity = [];

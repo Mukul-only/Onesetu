@@ -16,6 +16,7 @@ const Input = ({
   primaryLabel,
   login,
   signup,
+  labelNone,
 }) => {
   const dispatch = useDispatch();
   const {
@@ -97,12 +98,14 @@ const Input = ({
   }, [dispatch, isValid]);
   return (
     <div className={`${className ? className : ""} `}>
-      <label
-        htmlFor={label}
-        className="text-sm md:text-base font-semibold xl:font-bold"
-      >
-        {label}
-      </label>
+      {!labelNone && (
+        <label
+          htmlFor={label}
+          className="text-sm md:text-base font-semibold xl:font-bold"
+        >
+          {label}
+        </label>
+      )}
       <FormInput
         input={{ ...inputParams, id: label, value: input }}
         onChange={inputChangeHandler}
