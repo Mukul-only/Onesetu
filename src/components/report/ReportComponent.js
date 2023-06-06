@@ -2,12 +2,14 @@ import { useEffect } from "react";
 import Button from "../../UI/Button";
 import Card from "../../UI/Card";
 import ProgressBar from "./ProgressBar";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { formDataAction } from "../../store/formData-slice";
 
 const ReportComponent = (props) => {
   const dispatch = useDispatch();
+  const [searchParams] = useSearchParams();
+  const isEdit = searchParams.get("mode") === "edit";
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -16,6 +18,7 @@ const ReportComponent = (props) => {
       );
     }
   }, [dispatch]);
+
   return (
     <div className="bg-lightBlue py-10">
       <Card className="flex flex-col  items-center">
@@ -23,9 +26,20 @@ const ReportComponent = (props) => {
           Create Project Report with{" "}
           <span className="text-Blue-500"> Onesetu</span> <span>❤️</span>
         </h1>
-        <div className="flex items-end xl:items-center mt-12 mb-28">
-          <ProgressBar progress={props.progress} />
+        <div className="flex flex-col mt-12 mb-28 items-end space-y-2">
+          <div className="flex items-end xl:items-center ">
+            <ProgressBar progress={props.progress} />
+          </div>
+          {isEdit && (
+            <Link
+              to="/createreport/review"
+              className="text-2xl lg:text-4xl text-Blue-500"
+            >
+              {"->"}
+            </Link>
+          )}
         </div>
+
         <div className="flex flex-col items-center w-full space-y-4">
           {props.children}
         </div>

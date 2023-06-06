@@ -1,5 +1,5 @@
 import Button from "../../UI/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import ReportComponent from "../../components/report/ReportComponent";
 import ReportsFeilds from "../../components/report/ReportsFeilds";
 import { useSelector, useDispatch } from "react-redux";
@@ -8,6 +8,7 @@ import { formDataAction } from "../../store/formData-slice";
 import { useEffect, useRef, useState } from "react";
 
 const BusinessInfoPage = () => {
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isFormValid = useSelector((state) => state.formfeild.isFormValid);
@@ -16,11 +17,15 @@ const BusinessInfoPage = () => {
   const { needFor } = useSelector((state) => state.formfeild);
   const bottomRef = useRef();
   const [key, setKey] = useState(false);
+  const isEdit = searchParams.get("mode") === "edit";
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [key]);
   useEffect(() => {
     dispatch(formfeildSliceAction.setIndex(0));
+    return () => {
+      dispatch(formfeildSliceAction.reset());
+    };
   }, []);
   useEffect(() => {
     if (needFor === "working") {
@@ -50,7 +55,8 @@ const BusinessInfoPage = () => {
     } else if (isFormValid && formData.isFormDataValid) {
       dispatch(formfeildSliceAction.setIndex(0));
       dispatch(formfeildSliceAction.reset());
-      navigate("personalinfo");
+
+      navigate(`${isEdit ? "personalinfo/?mode=edit" : "personalinfo"}`);
     }
   };
   const ar = ReportsFeilds();

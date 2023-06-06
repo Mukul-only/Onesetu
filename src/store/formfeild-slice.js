@@ -95,9 +95,13 @@ const formfeildSlice = createSlice({
       if (action.payload === "working") {
       }
     },
+    setGotoEdit(state, action) {
+      state.gotoEdit = action.payload;
+    },
     reset(state) {
       state.allFeildValidity = [];
       state.isFormValid = true;
+
       state.allFeildIsTouched = [];
       state.index = 0;
       state.needFor = "";

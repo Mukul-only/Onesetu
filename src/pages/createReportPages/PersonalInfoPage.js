@@ -4,13 +4,18 @@ import ReportComponent from "../../components/report/ReportComponent";
 import PersonalDetails from "../../components/report/personalInfo/PersonalDetails";
 import { formfeildSliceAction } from "../../store/formfeild-slice";
 import { useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 const PersonalInfoPage = (props) => {
   const dispatch = useDispatch();
   const reportData = useSelector((state) => state.formdata.allExpensedata);
   const { isFormValid } = useSelector((state) => state.formfeild);
-
+  const [searchParams] = useSearchParams();
+  const isEdit = searchParams.get("mode") === "edit";
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+    return () => {
+      dispatch(formfeildSliceAction.reset());
+    };
   }, []);
   const continueHandler = (e) => {
     dispatch(
@@ -32,7 +37,7 @@ const PersonalInfoPage = (props) => {
     <ReportComponent
       progress="1"
       toContinue="/createreport/review"
-      toBack=".."
+      toBack={`${isEdit ? "/createreport/?mode=edit" : ".."}`}
       onContinue={continueHandler}
       onBack={backHandler}
     >

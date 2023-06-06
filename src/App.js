@@ -18,7 +18,10 @@ function App() {
           path: "/createreport",
           children: [
             { index: true, element: <BusinessInfoPage /> },
-            { path: "personalinfo", element: <PersonalInfoPage /> },
+            {
+              path: "personalinfo",
+              element: <PersonalInfoPage />,
+            },
             { path: "/createreport/review", element: <ReviewReportPage /> },
           ],
         },

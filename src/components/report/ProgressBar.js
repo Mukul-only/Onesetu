@@ -1,4 +1,5 @@
 import check from "./check.svg";
+
 const ProgressElement = (props) => {
   return (
     <div className="flex flex-col md:flex-row items-center">

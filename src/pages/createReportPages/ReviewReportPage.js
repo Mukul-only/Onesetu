@@ -29,6 +29,9 @@ const ReviewReportPage = () => {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+    return () => {
+      dispatch(formfeildSliceAction.reset());
+    };
   }, []);
   useEffect(() => {
     setHasError(false);

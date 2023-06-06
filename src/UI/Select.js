@@ -45,7 +45,7 @@ const Select = ({ id, label, className, options }) => {
         id={label}
         value={value}
         onChange={inputChangeHandler}
-        className={` text-sm md:text-base w-full md:py-2 p-2 md:px-3 border-2 rounded-md xl:rounded-lg  outline-none ${
+        className={` text-sm md:text-base w-full md:py-2 p-2 md:px-3 border md:border-2 rounded-md xl:rounded-lg  outline-none ${
           hasError ? "border-red-300 bg-red-50" : `border-fadeBlue bg-xfadeBlue`
         } `}
       >

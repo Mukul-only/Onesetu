@@ -6,12 +6,12 @@ import arrow from "../../../assets/swirl-arrow.svg";
 import text from "../../../assets/text-approve.svg";
 import report from "../../../assets/report.svg";
 import down from "../../../assets/download.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LoanBanner from "./LoanBanner";
 import FeedBack from "../../globalComponents/FeedBack";
 import { Link } from "react-router-dom";
+import { formfeildSliceAction } from "../../../store/formfeild-slice";
 
-import useIsInViewport from "../../hooks/use-isInViewport";
 const ReviewReport = (props) => {
   const projectName = useSelector(
     (state) => state.formdata.allExpensedata["Name of firm"]
@@ -39,7 +39,7 @@ const ReviewReport = (props) => {
             them for free and download the updated version as needed.
           </p>
           <div className="relative space-x-2 md:space-x-4  text-sm xl:text-lg font-semibold my-10">
-            <Link to="/createreport">
+            <Link to="/createreport/?mode=edit">
               <Button className="min-w-0 w-32 xl:w-[294px] py-3 xl:py-4 text-Blue-500 hover:scale-110 duration-500">
                 Edit Report
               </Button>
