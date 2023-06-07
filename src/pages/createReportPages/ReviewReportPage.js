@@ -41,9 +41,11 @@ const ReviewReportPage = () => {
 
     if (token && token !== "undefined") {
       // console.log("found");
-      dispatch(formDataAction.resetFinal());
-      alert("Report will download shortly.....");
-      navigate("/");
+      setTimeout(() => {
+        dispatch(formDataAction.resetFinal());
+
+        navigate("/");
+      }, [1000]);
     } else {
       e.preventDefault();
       setShowOverlay(true);

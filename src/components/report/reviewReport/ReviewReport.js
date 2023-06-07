@@ -11,6 +11,7 @@ import LoanBanner from "./LoanBanner";
 import FeedBack from "../../globalComponents/FeedBack";
 import { Link } from "react-router-dom";
 import { formfeildSliceAction } from "../../../store/formfeild-slice";
+import ReportPdf from "../ReportPdf";
 
 const ReviewReport = (props) => {
   let projectName = useSelector(
@@ -80,7 +81,7 @@ const ReviewReport = (props) => {
           </button>
         </div>
       </Card>
-
+      <ReportPdf onClick={props.onClick} />
       <LoanBanner />
 
       <FeedBack className="">

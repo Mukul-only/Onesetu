@@ -98,3 +98,46 @@ a {
 .report-label {
   @apply text-darkBlue font-bold text-base md:text-2xl tracking-tighter;
 }
+
+.sideways-motion {
+  position: relative;
+  animation: sideways 35s linear infinite;
+}
+@keyframes sideways {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: -350%;
+  }
+}
+@media (min-width: 564px) {
+  @keyframes sideways {
+    0% {
+      left: 0;
+    }
+    100% {
+      left: -200%;
+    }
+  }
+}
+@media (min-width: 764px) {
+  @keyframes sideways {
+    0% {
+      left: 0;
+    }
+    100% {
+      left: -150%;
+    }
+  }
+}
+@media (min-width: 1440px) {
+  @keyframes sideways {
+    0% {
+      left: 0;
+    }
+    100% {
+      left: -65%;
+    }
+  }
+}
