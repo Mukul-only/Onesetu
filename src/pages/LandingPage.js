@@ -13,7 +13,7 @@ import FAQsection from "../FAQs/FAQsection";
 import AskSection from "../FAQs/AskSection";
 const LandingPage = (props) => {
   useEffect(() => {
-    // window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
   }, []);
   return (
     <>
