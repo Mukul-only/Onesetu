@@ -23,7 +23,7 @@ const FAQsection = (props) => {
           ans="The official dress code is Whatever makes you feel fabulous. Whether it's pajamas, a tuxedo, or a superhero costume, we welcome all styles."
         />
         <FAQcard
-          ques="Who came first, chicken of egg."
+          ques="Who came first, chicken or egg."
           ans="Your mum bruh 🫵🏻! wtf is this question, ask something that have a answer."
         />
         <FAQcard
