@@ -14,8 +14,13 @@ const Footer = (props) => {
       <div className={`bg-Blue-500 py-6 ${props.className}`}>
         <Card className="flex justify-between ">
           <div>
-            <SVG svg={Brand} className="w-44 h-20  brand -ml-3" />
-            <p className="text-white uppercase mt-6 mb-2">Stay Connected</p>
+            <SVG
+              svg={Brand}
+              className="w-32 h-12 xl:w-44 xl:h-20  brand -ml-3"
+            />
+            <p className="text-white uppercase mt-6 mb-2 text-sm xl:text-base">
+              Stay Connected
+            </p>
             <span className="flex space-x-4">
               <img src={fb} className="w-2 md:w-3" />
               <img src={twitter} className="w-3 md:w-4" />
@@ -25,8 +30,8 @@ const Footer = (props) => {
             </span>
           </div>
           <div className="text-white">
-            <p className="font-semibold  text-lg my-4">Links</p>
-            <ul className="text-gray-300 space-y-2">
+            <p className="font-semibold text-base xl:text-lg my-4">Links</p>
+            <ul className="text-gray-300 space-y-2 text-sm xl:text-base">
               <li className="hover:text-white">
                 <Link to="/">Home</Link>
               </li>
