@@ -19,7 +19,7 @@ module.exports = {
         exl: "0px 14px 94px 0px rgba(0, 0, 0, 0.05)",
       },
       colors: {
-        darkBlue: "#00357C",
+        darkBlue: "#314259",
         fadeBlue: "#00357C40",
         xfadeBlue: "#00357C0D",
         deepBlue: "#282C3F",
@@ -31,6 +31,7 @@ module.exports = {
         "Purple-500": "#7C6FF5",
         "Purple-600": "#4F479D",
         "Green-500": "rgba(74, 223, 147, 1)",
+        "Blue-100": "rgba(160, 195, 255, 0.64)",
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],

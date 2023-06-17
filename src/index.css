@@ -141,3 +141,20 @@ a {
     }
   }
 }
+
+.report-div {
+  background-image: url("./assets/report.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.brand path:nth-child(1) {
+  fill: white;
+}
+.brand path:nth-child(2) {
+  fill: white;
+}
+.brand path:nth-child(3) {
+  fill: white;
+}

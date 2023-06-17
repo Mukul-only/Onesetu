@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import LoanBanner from "./LoanBanner";
 import FeedBack from "../../globalComponents/FeedBack";
 import { Link } from "react-router-dom";
-import { formfeildSliceAction } from "../../../store/formfeild-slice";
+
 import ReportPdf from "../ReportPdf";
 
 const ReviewReport = (props) => {
@@ -82,7 +82,27 @@ const ReviewReport = (props) => {
         </div>
       </Card>
       <ReportPdf onClick={props.onClick} />
-      <LoanBanner />
+      <LoanBanner
+        title="Apply For Quick & Easy Loan"
+        sub=" Fast MSME loans with Onesetu . Submit project report & PAN card.
+            Access funds from trusted money lenders. No bank delays or
+            rejections."
+        btnText="Submit report & get loan"
+      >
+        <div className="flex space-x-1 xl:flex-row flex-col items-center xl:items-start">
+          <div className="bg-white shadow-box mt-6 w-[325px] xl:w-[372.8px] h-max p-[20px] text-center font-semibold text-Purple-500 rounded-xl xl:-mr-12 text-sm xl:text-lg">
+            Got Approved Loan of 5 Lakh from Onesetu in just 24 Hours
+          </div>
+          <div className="relative w-max">
+            <div className="absolute w-full h-[70%] bottom-0 left-0 bg-Purple-600 rounded-t-full" />
+            <img
+              src={require("../../../assets/hero.png")}
+              alt="img"
+              className="relative z-10 w-56 xl:w-72"
+            />
+          </div>
+        </div>
+      </LoanBanner>
 
       <FeedBack className="">
         <h1 className="text-3xl xl:text-5xl font-bold tracking-tighter max-w-xl text-center mx-auto text-deepBlue-800">

@@ -1,42 +1,113 @@
+import { useState } from "react";
 import Card from "../../UI/Card";
-import StepCard from "./StepCard";
-import checkList from "../../assets/checkList.svg";
-import phone from "../../assets/phone.svg";
-import moneyHand from "../../assets/moneyHand.svg";
-
-const Steps = (props) => {
+import Arrow from "../../svg/Arrow";
+import SVG from "../../svg/SVG";
+const Step = (props) => {
   return (
-    <div className="bg-lightBlue py-16 mb-32">
-      <Card className="">
-        <p className="text-deepBlue tracking-widest xl:tracking-xWidest text-xs xl:text-sm text-center">
-          HOW IT WORKS
-        </p>
-        <h1 className=" max-w-2xl xl:max-w-4xl text-center mx-auto text-2xl xl:text-4xl font-bold text-deepBlue xl:leading-[45px] mt-12">
-          Platform for <span className="text-cyanY ">MSME</span> to make project
-          report & apply for bank loan at your comfort zone
+    <p className="text-base xl:text-xl font-medium text-white bg-Blue-500 rounded-tl-xl rounded-br-xl px-6 py-3 xl:px-8 xl:py-4 w-max">
+      {props.text}
+    </p>
+  );
+};
+const AltCard = (props) => {
+  return (
+    <div
+      className={`flex flex-col xl:flex-row justify-between items-center gap-8 ${
+        props.edit ? "bg-Purple-500" : "bg-white"
+      } border shadow-card px-12 py-10 rounded-xl  ${props.className}`}
+    >
+      <img src={props.image} />
+      <div className={`text-center xl:text-start`}>
+        <h1
+          className={`font-bold text-xl xl:text-2xl text-deepBlue ${
+            props.edit ? "text-white" : ""
+          }`}
+        >
+          {props.title}
         </h1>
-        <div className="flex flex-col xl:flex-row gap-12 justify-between xl:-mb-52 mt-32 items-center">
-          <StepCard
-            step="01."
-            svg={checkList}
-            heading="Create Your Project report "
-            description="Enter few details about your bussiness and generate report in less few clicks"
-          />
-          <StepCard
-            step="02."
-            svg={phone}
-            heading="Review and Edit your report "
-            description="Enter few details about your bussiness and generate report in less few clicks"
-          />
-          <StepCard
-            step="03."
-            svg={moneyHand}
-            heading="Create Your Project report "
-            description="Enter few details about your bussiness and generate report in less few clicks"
-          />
-        </div>
-      </Card>
+        <p
+          className={`mt-6 font-medium text-sm xl:text-base ${
+            props.edit ? "text-white" : "text-gray-400"
+          }  max-w-sm `}
+        >
+          {props.sub}
+        </p>
+        <button
+          className={`flex items-center gap-4 mt-8 text-xs xl:text-sm font-semibold  rounded-full  hover:shadow-xl hover:scale-105 duration-500  px-6 py-2  mx-auto xl:mx-0 ${
+            props.edit
+              ? "text-Purple-500 bg-white"
+              : "text-Blue-500 bg-blue-50 border border-Blue-500"
+          }`}
+        >
+          <span>{props.btnText}</span>
+          <span
+            className={`flex justify-center items-center w-6 h-6  rounded-full  ${
+              props.edit ? "bg-Purple-500" : "bg-Blue-500"
+            }`}
+          >
+            <SVG svg={Arrow} className="w-2 h-2" />
+          </span>
+        </button>
+      </div>
     </div>
+  );
+};
+const Steps = (props) => {
+  const [h, setH] = useState(0);
+  window.onscroll = () => {
+    const val = ((window.scrollY - 1000) * 100) / 1500;
+    if (window.innerWidth > 768) setH(val);
+    else setH(val - 30);
+  };
+  return (
+    <Card className="flex flex-col items-center py-24">
+      <p className="text-xs xl:text-base text-Blue-500 bg-blue-50 rounded-full px-6 py-2">
+        What we do
+      </p>
+      <h1 className="text-2xl md:text-4xl text-center xl:text-5xl font-bold tracking-tight text-deepBlue my-10">
+        Facing rejection from bank!{" "}
+        <span className="text-Blue-500">Onesetu</span> Is here
+      </h1>
+      <p className="max-w-lg md:max-w-2xl xl:max-w-4xl text-sm md:text-base xl:font-medium xl:text-lg text-center text-gray-500">
+        We simplify loan acquisition by sending your detailed business report to
+        500+ lenders. Receive multiple loan offers, negotiate, and choose the
+        best option. Avoid the frustration and time consumption of traditional
+        bank loans.
+      </p>
+      <div className="relative flex flex-col isolate mt-12 items-center   ">
+        <span className="block absolute top-0 bottom-0 w-2 left-1/2 -translate-x-1/2 bg-gray-200 -z-10 overflow-hidden">
+          <span
+            className={`block w-full bg-Blue-500 rounded-full duration-100 `}
+            style={{ height: `${h}%` }}
+          />
+        </span>
+        <Step text="1 Step" />
+        <AltCard
+          title="Fill in your details"
+          sub="Just Fill in the Blanks & Our Most Advanced Software will Automatically make a Full Project Report for You. Our Report is generated by analyzing your business financials "
+          image={require("../../assets/hand.png")}
+          btnText="Fill details now"
+          className="mt-20 mb-44"
+        />
+        <Step text="2 Step" />
+        <AltCard
+          title="Get Bussiness Report"
+          sub="After filling all the detail you will get your business project report. Review It , Edit  It , Download it Completely Free "
+          image={require("../../assets/list.png")}
+          btnText="Download Report"
+          className="mt-20 mb-44"
+        />
+        <Step text="3 Step" />
+        <AltCard
+          title="Apply For Quick & Easy Loan"
+          sub="Your Business profile will be shared to 500+ money lenders and you will get various loan offer from them. You can  negotiate and choose any of them and get loan all digitally while sitting at your home "
+          image={require("../../assets/money.png")}
+          btnText="Apply Now!"
+          className="mt-20 "
+          edit
+        />
+      </div>
+    </Card>
   );
 };
 export default Steps;
