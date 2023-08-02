@@ -4,7 +4,7 @@ import FAQcard from "./FAQcard";
 const FAQsection = (props) => {
   return (
     <Card className="flex flex-col items-center py-20">
-      <h1 className="text-2xl md:text-3xl text-center xl:text-4xl font-bold  text-deepBlue  max-w-3xl ">
+      <h1 className="max-w-3xl text-2xl font-bold text-center md:text-3xl xl:text-4xl text-deepBlue ">
         Frequently asked questions
       </h1>
       <p className="text-gray-400 text-sm xl:text-xl tracking-tight my-6 max-w-[16rem] xl:max-w-3xl text-center">
@@ -21,14 +21,6 @@ const FAQsection = (props) => {
         <FAQcard
           ques="What is the recommended attire for browsing your website?"
           ans="The official dress code is Whatever makes you feel fabulous. Whether it's pajamas, a tuxedo, or a superhero costume, we welcome all styles."
-        />
-        <FAQcard
-          ques="Who came first, chicken or egg."
-          ans="Your mum bruh 🫵🏻! wtf is this question, ask something that have a answer."
-        />
-        <FAQcard
-          ques="What is payment method to support Onesetu"
-          ans="😊😊😊 you can show your love❤️💕 and support by paying to 9696373283@axl upi. Thnx"
         />
       </div>
     </Card>
